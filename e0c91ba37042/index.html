@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"remove","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="点击查看原文进入">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大数据打脸性别偏见">
+<meta property="og:url" content="http://example.com/e0c91ba37042/index.html">
+<meta property="og:site_name" content="MayLove">
+<meta property="og:description" content="点击查看原文进入">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_gif/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSglMT7DPUPVPld9XlT28FtCXKSicpDq1Omjt0f39iaFKzeDd5IFqkoXibQQ/640?wx_fmt=gif">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgE2biaK02BiaibhmoPFLV4TWVS4JUgyZUkIQn3ALr6ZGiaLAmgEdTcIpvzw/640?wx_fmt=png">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgRzViaDgu2j2cZHdwIR2dWiceEE9HXsDZCsQLRNQGibSfEVtZpAuTCxicyw/640?wx_fmt=png">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgzsUdEQsY62ordR0NpLgRKLKicPcaRbnTRKSRc04NS6yvjgjxlFqTNpA/640?wx_fmt=jpeg">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgWjh35h3NrGY99GTJXyDPXosBJL8MZ7aunZILibK0tOWLV3sE8l87qBQ/640?wx_fmt=jpeg">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgLN8icL9orKmUd6WMOQQRDbD2SwXPTYklyofs2LkLHmBxSgClqsT7PHQ/640?wx_fmt=jpeg">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgvicdTYvrte4aIv7w7F3S1tuPHa6yQK06DqgosLy1I5BGRQtglGHHic6A/640?wx_fmt=jpeg">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgWFqnXhOEveoiaa38ZmBxOKhQNeribL9gDfq3LcYZAuYWwhYVR8pGdMmw/640?wx_fmt=jpeg">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgFk1Sic7Tia2vmFasLpiagBxxedOXVqTicoVpSnADXeWC92oKncvkjD3qoQ/640?wx_fmt=jpeg">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSg8efslLdS3TIXQvapLfZSpUiaIjHxKhdH1JDTLEYU7N3AIzdjXlickGMw/640?wx_fmt=jpeg">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgRzViaDgu2j2cZHdwIR2dWiceEE9HXsDZCsQLRNQGibSfEVtZpAuTCxicyw/640?wx_fmt=png">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgnHeWnicCdicEhRdOQBgjQAt2n0iaYbT0NgacHbSI0XzpFJ9nYNqXPFN7g/640?wx_fmt=jpeg">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgGyaeYkiadRNPuJrEwHfibSWKb9VuLszib3uKSxia5uqcSOz7agrPJ2Btrw/640?wx_fmt=png">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgTNWrOkboK6uguNibETf5dd7dsHHu5jD4VOibE782acKwkL8asnLDLsKA/640?wx_fmt=png">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgK5H64JxEkUHhJhu2bd1hw3ic4vKT3bdoN3ztqeG8pSUseTfs7LLn5kQ/640?wx_fmt=png">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgAsNDeM5UIPjy3M4Ge2dKNrF3UHjI0yIawHwfujBF3GnkibgECibLibUyQ/640?wx_fmt=jpeg">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgRzViaDgu2j2cZHdwIR2dWiceEE9HXsDZCsQLRNQGibSfEVtZpAuTCxicyw/640?wx_fmt=png">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgdBtB2DYeloxibAqHSAgEBdAiaEeN4str6mXkJQA2baZScDzP0VqKbQ1g/640?wx_fmt=jpeg">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgRzViaDgu2j2cZHdwIR2dWiceEE9HXsDZCsQLRNQGibSfEVtZpAuTCxicyw/640?wx_fmt=png">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgibPKqRItFpJGoKichia2vOcHVmialRjmjgyiaaCricdNBMSutPvlJZg2285g/640?wx_fmt=jpeg">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgDSqp241HXRAZanAicLCZ5soWsft8GBjWKlkeDAnza1yEvMeEialwIhSQ/640?wx_fmt=jpeg">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgRzViaDgu2j2cZHdwIR2dWiceEE9HXsDZCsQLRNQGibSfEVtZpAuTCxicyw/640?wx_fmt=png">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSghRRiaibbVsfAMK6t7JLrKR0diaEMQgXgT9MzCBrJrSub2wRWVPeD365Ow/640?wx_fmt=jpeg">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSghkswQE2SMGIFtLbiaXjSlerypzDVuKDr3mZkylnBHD1NpF2wn6aAjOg/640?wx_fmt=jpeg">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgE2biaK02BiaibhmoPFLV4TWVS4JUgyZUkIQn3ALr6ZGiaLAmgEdTcIpvzw/640?wx_fmt=png">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgAYorcfWaqlqql2NS63m5NIndiafCPtP8IIG1CKAFsCm3Ss6WpUyAhbw/640?wx_fmt=jpeg">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgDAGL0ibrHo7XHMAFiaWXSVbpjdIcLULiaLpibvdZXwLlddaDPxxsFd65ibQ/640?wx_fmt=jpeg">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSg9SpSccg7bDe1FTJ1xbTTtOzaoPV1YbGVTFibKpPfRvYB2Aenic94VVbw/640?wx_fmt=jpeg">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSg5u2ySlDYLAF6iaYuxMOLBia3HnF27o6qYEOFkiccy7t8e7V4GQDWia8Gsg/640?wx_fmt=png">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgbcdGdaIKQIpobymbAnjjx3AopzusBrPzo8HTgvLicBWCHfKxtrlEx0Q/640?wx_fmt=jpeg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_795.jpg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_1126.jpg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_27.jpg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_1214.jpg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_54.jpg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_1501.jpg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_1456.jpg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_203.jpg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_1179.jpg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_329.jpg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_541.jpg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_492.jpg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_230.jpg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_236.jpg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_816.jpg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_1238.jpg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_138.jpg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_382.jpg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_1207.jpg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_509.jpg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_664.jpg">
+<meta property="article:published_time" content="2021-07-26T11:31:29.750Z">
+<meta property="article:modified_time" content="2021-07-26T12:15:41.602Z">
+<meta property="article:author" content="MayLove">
+<meta property="article:tag" content="莓辣MAYLOVE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mmbiz.qpic.cn/mmbiz_gif/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSglMT7DPUPVPld9XlT28FtCXKSicpDq1Omjt0f39iaFKzeDd5IFqkoXibQQ/640?wx_fmt=gif">
+
+<link rel="canonical" href="http://example.com/e0c91ba37042/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>大数据打脸性别偏见 | MayLove</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">MayLove</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个欢迎所有「妄想」改变中国性教育现状的酷小孩的地方</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/e0c91ba37042/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MayLove">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MayLove">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          大数据打脸性别偏见
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-07-26 19:31:29 / 修改时间：20:15:41" itemprop="dateCreated datePublished" datetime="2021-07-26T19:31:29+08:00">2021-07-26</time>
+            </span>
+
+          
+            <div class="post-description">点击查看原文进入</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <html>
+<head>
+<title>maylove</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,viewport-fit=cover">
+<style>
+*{margin:0;padding:0;max-width:100%;box-sizing:border-box;}html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;line-height:1.6}img{z-index:999;position:relative;max-width:100%;margin:10px 0;}body{-webkit-touch-callout:none;font family:-apple-system-font,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei UI","Microsoft YaHei",Arial,sans-serif;color:#333;letter-spacing:.034em}h1,h2,h3,h4,h5,h6{font-weight:400;font-size:16px;line-height:36px;}a{color:#576b95;text-decoration:none;-webkit-tap-highlight-color:rgba(0,0,0,0)}td,th{word-wrap:break-word;padding:5px 10px;border:1px solid #DDD;}table{margin-bottom:10px;border-collapse:collapse;display:table;width:100%!important;}.appmsg_skin_default .rich_media_area_primary{background-color:#fff}.appmsg_skin_default .rich_media_area_primary .weui-loadmore_line .weui-loadmore__tips{background-color:#fff}.rich_media_area_primary{padding:20px 16px 12px;background-color:#fafafa}@media (max-width:375px){.rich_media_area_primary{padding:20px 60px 15px 60px}.rich_media_area_extra{padding:0 60px 21px 60px}}@media (min-width:1024px){.rich_media_area_primary_inner,.rich_media_area_extra_inner,body{max-width:677px;margin-left:auto;margin-right:auto}.rich_media_area_primary{padding-top:32px}}.rich_media{padding:20px;}.appmsg_skin_default .rich_media_area_primary{background-color:#fff}.appmsg_skin_default .rich_media_area_primary .weui-loadmore_line .weui-loadmore__tips{background-color:#fff}@media screen and (min-width:1024px){.rich_media_area_primary_inner,.rich_media_area_extra_inner{max-width:677px;margin-left:auto;margin-right:auto}.rich_media_area_primary{padding-top:32px}}.rich_media_content{overflow:hidden;color:#333;font-size:17px;line-height:37px;;word-wrap:break-word;-webkit-hyphens:auto;-ms-hyphens:auto;hyphens:auto;text-align:justify;position:relative;z-index:0}.rich_media_content *{max-width:100%!important;box-sizing:border-box!important;-webkit-box-sizing:border-box!important;word-wrap:break-word!important}.rich_media_content p{clear:both;min-height:1em}.rich_media_content em{font-style:italic}.rich_media_content fieldset{min-width:0}.rich_media_content .list-paddingleft-1,.rich_media_content .list-paddingleft-2,.rich_media_content .list-paddingleft-3{padding-left:2.2em}.rich_media_content .list-paddingleft-1 .list-paddingleft-2,.rich_media_content .list-paddingleft-2 .list-paddingleft-2,.rich_media_content .list-paddingleft-3 .list-paddingleft-2{padding-left:30px}.rich_media_content .list-paddingleft-1{padding-left:1.2em}.rich_media_content .list-paddingleft-3{padding-left:3.2em}.rich_media_content .code-snippet,.rich_media_content .code-snippet__fix{max-width:1000%!important}.rich_media_content .code-snippet *,.rich_media_content .code-snippet__fix *{max-width:1000%!important}.rich_media_title{font-size:22px;line-height:42px;;line-height:1.4;margin:10px 0;padding-bottom:10px;border-bottom:1px solid #e7e7eb;}@supports(-webkit-overflow-scrolling:touch){.rich_media_title{font-weight:700}}.rich_media_meta{display:inline-block;vertical-align:middle;margin:0 10px 10px 0;font-size:15px;line-height:35px;;line-height:35px;;line-height:35px;;line-height:35px;;-webkit-tap-highlight-color:rgba(0,0,0,0)}.rich_media_meta.icon_appmsg_tag{margin-right:4px}.rich_media_meta.meta_tag_text{margin-right:0}.rich_media_meta_list em{font-style:normal}.rich_media_meta_text{color:rgba(0,0,0,0.3)}p{margin:0;}.msgBox{margin-top:20px;padding-top:20px;padding-left:50px;overflow:hidden;border-top:2px dashed #09a2ff;}.msg{padding-top:7px;clear:both;}.msgBody{float:right;width:100%;margin-left:55px;padding-bottom:15px;border-bottom:1px dashed #e0e0e0;}.userHeadImg{float:left;margin-left:-50px;}.userHeadImg img{width:40px;height:40px;margin-right:10px;border-radius:3px;}.userName{color:#888888;line-height:24px;font-size:14px;line-height:34px;;line-height:34px;;line-height:34px;;line-height:34px;;line-height:34px;;line-height:34px;;line-height:34px;;line-height:34px;;line-height:34px;;line-height:34px;;line-height:34px;;margin:5px 0 5px 0;height:24px;}.replyBody,.autherBody{color:#565656;font-size:15px;}.replyIcon{border-left:4px solid #33ab01;margin-right:5px;}.ad{text-decoration:none;color:#d6d4d4;font-size:12px;line-height:32px;;}.msgBodyReply{padding-top:5px;}.userName span{float:right;color:#afafaf;font-size:14px;}code{text-align:left;font-size:14px;display:block;white-space:pre;display:-webkit-box;display:-webkit-flex;display:flex;position:relative;}.code-snippet__fix{font-size:14px;margin:10px 0;display:block;color:#333;position:relative;background-color:rgba(0,0,0,0.03);border:1px solid #f0f0f0;border-radius:2px;display:-webkit-box;display:-webkit-flex;display:flex;padding-left:25px;line-height:26px}.code-snippet__fix code{text-align:left;font-size:14px;display:block;white-space:pre;display:-webkit-box;display:-webkit-flex;display:flex;position:relative;font family:Consolas,"Liberation Mono",Menlo,Courier,monospace}.code-snippet__comment,.code-snippet__quote{color:#afafaf;font-style:italic}.code-snippet__keyword,.code-snippet__selector-tag,.code-snippet__subst{color:#ca7d37}.code-snippet__number,.code-snippet__literal,.code-snippet__variable,.code-snippet__template-variable,.code-snippet__tag .code-snippet__attr{color:#0e9ce5}.code-snippet__string,.code-snippet__doctag{color:#d14}.code-snippet__title,.code-snippet__section,.code-snippet__selector-id{color:#d14}.code-snippet__subst{font-weight:normal}.code-snippet__type,.code-snippet__class .code-snippet__title{color:#0e9ce5}.code-snippet__tag,.code-snippet__name,.code-snippet__attribute{color:#0e9ce5;font-weight:normal}.code-snippet__regexp,.code-snippet__link{color:#ca7d37}.code-snippet__symbol,.code-snippet__bullet{color:#d14}.code-snippet__built_in,.code-snippet__builtin-name{color:#ca7d37}.code-snippet__meta{color:#afafaf}.code-snippet__deletion{background:#fdd}.code-snippet__addition{background:#dfd}.code-snippet__emphasis{font-style:italic}.code-snippet__strong{font-weight:bold}.account_avatar{width:40px;height:40px;padding:0;}.account_info{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;-webkit-align-items:center;padding:20px 0;align-items:center}.flex_bd{padding-left:14px;}.account_nickname{display:inline-block;vertical-align:middle;line-height:1.2;color:#576b95;font-size:14px}.account_desc{overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1;color:rgba(0,0,0,0.3);font-size:14px;line-height:1.2;padding-top:.4em}.msg_source_url{text-align:left;word-break:break-all;margin-top:20px;}.msg_source_url a{padding-right:10px;}.msg_source_url .url_text{color:#a8a8a8;}.video-desc{font-size:14px;margin-top:15px;color:#6c6c6c;}.msg_source_url{text-align:left;}.original_primary_card_tips{color:rgba(0,0,0,0.3);line-height:1.4;font-size:15px;}.weui-flex__item{margin-bottom:20px;padding:20px 16px;margin-top:16px;line-height:1.4;align-items:center;background-color:#f7f7f7;border-radius:8px;position:relative;}.original_primary_desc{color:rgba(0,0,0,0.5);font-size:14px;padding-top:4px;width:auto;overflow:hidden;text-overflow:ellipsis;}.msgBodyReplyList{border-top:1px solid #e1e1e1;margin-top:10px;}.msgBodyReplyListTop{border-top:0;}.reply_like_num{float:right;font-size:14px;color:#c7c7c7;}.msgData{margin-top:20px;color:#626262;}.msgData span{font-size:14px;padding-right:15px;}.msgData .likes{float:right;padding-right:0;}.js_text_content p{font-size:18px;line-height:38px;;}.rich_media_meta_link{font-size:15px;}blockquote {padding-left: 10px;border-left: 3px solid #dbdbdb;color: rgba(0,0,0,0.5);font-size:15px;line-height:35px;;padding-top: 4px;margin: 1em 0;}.video_iframe{width:500px;height:400px;}.blockquote_info{color:#b5b5b5;margin-top:10px;}.playVideoWx{position:relative;display:block;}.icon_mid_play{position:absolute;z-index:9999;top:50%;left:50%;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;width:48px;height:48px;background:rgba(237,237,237,0.9);border-radius:50%}.icon_mid_play:before{content:"";text-indent:-999em;display:inline-block;width:28px;height:28px;vertical-align:middle;background-size:cover;background-image:url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E  %3Cpath fill='%23151515' fill-rule='evenodd' d='M9.524 4.938l10.092 6.21a1 1 0 0 1 0 1.704l-10.092 6.21A1 1 0 0 1 8 18.21V5.79a1 1 0 0 1 1.524-.852z'/%3E%3C/svg%3E")}
+</style>
+<link href="https://www.juyifx.cn/config/css/wxArticle.css" rel="stylesheet"/>
+</head>
+<body>
+                
+                <h2 class="rich_media_title" id="activity-name"><a href="http://mp.weixin.qq.com/s?__biz=MjM5NzkxNTI2Ng==&mid=2247489845&idx=1&sn=2f20a978f5a7a788ebdf8a075b112708&chksm=a6d3e6d891a46fced59054a2d70f25547c9ebb0dd1a15bc2e6386b4e57a8b22e41c6dce108f0#rd" title="点击文章标题可访问原文章链接" target="_blank">
+                    
+                    
+                    
+大数据打脸性别偏见
+                </a></h2>
+                <div id="meta_content" class="rich_media_meta_list">
+                                                                                                                <span class="rich_media_meta rich_media_meta_text">
+                                                                    Lens
+                                                            </span>
+                                                                
+                                        <span class="rich_media_meta rich_media_meta_nickname" id="profileBt">
+                      <a href="javascript:void(0);" id="js_name">
+                        莓辣MAYLOVE                      </a>
+                      <div id="js_profile_qrcode" class="profile_container" style="display:none;">
+                          <div class="profile_inner">
+                              <strong class="profile_nickname">莓辣MAYLOVE</strong>
+                              
+
+                              <p class="profile_meta">
+                              <label class="profile_meta_label">微信号</label>
+                              <span class="profile_meta_value">meila2333</span>
+                              </p>
+
+                              <p class="profile_meta">
+                              <label class="profile_meta_label">功能介绍</label>
+                              <span class="profile_meta_value">一个欢迎所有「妄想」改变中国性教育现状的酷小孩的地方</span>
+                              </p>
+                              
+                          </div>
+                          <span class="profile_arrow_wrp" id="js_profile_arrow_wrp">
+                              <i class="profile_arrow arrow_out"></i>
+                              <i class="profile_arrow arrow_in"></i>
+                          </span>
+                      </div>
+                    </span>
+                    <em id="publish_time" class="rich_media_meta rich_media_meta_text">2019-06-05</em>
+                </div>
+
+                
+                                                <div id="js_tags" class="article-tag__list" style="display: none;" data-len="0">
+                                            
+                        <div class="article-tag-card__title">收录于话题</div>
+                        <div class="article-tags">
+                                                    </div>
+                                    </div><div id="weixin_content"><section class="xmteditor" style="display:none;" data-tools="新媒体管家" data-label="powered by xmt.cn"></section><section style="font-size:15px;line-height:35px;;padding: 0px 20px;box-sizing: border-box;font-style: normal;font-weight: 400;text-align: justify;">&nbsp;<section style="text-align: center;margin-top: 10px;margin-bottom: 10px;box-sizing: border-box;" powered-by="xiumi.us"><section style="max-width: 100%;vertical-align: middle;display: inline-block;line-height: 0;box-sizing: border-box;"></section></section><section style="font-size:15px;line-height:35px;;padding-right: 14px;padding-left: 14px;box-sizing: border-box;"><section style="text-align: center;margin-top: 10px;margin-bottom: 10px;box-sizing: border-box;" powered-by="xiumi.us"><section style="max-width: 100%;vertical-align: middle;display: inline-block;line-height: 0;box-sizing: border-box;"><img class="raw-image" data-ratio="0.3329412" src="https://may-love.oss-cn-beijing.aliyuncs.com/2019-06-05_大数据打脸性别偏见/1_Dq1Omjt0f39iaFKzeDd5IFqkoXibQQ.gif" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_gif/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSglMT7DPUPVPld9XlT28FtCXKSicpDq1Omjt0f39iaFKzeDd5IFqkoXibQQ/640?wx_fmt=gif'" data-type="gif" data-w="850" style="vertical-align: middle;box-sizing: border-box;"></section></section><section style="margin-right: 0%;margin-left: 0%;box-sizing: border-box;" powered-by="xiumi.us"><section style="box-sizing: border-box;font-size:16px;line-height:36px;;"><section style="text-align: left;box-sizing: border-box;" powered-by="xiumi.us"><section style="display: inline-block;width: 100%;vertical-align: top;border-left: 2px dashed rgb(160, 160, 160);border-bottom-left-radius: 0px;padding-left: 10px;box-sizing: border-box;"><section style="margin: 10px 0%;box-sizing: border-box;" powered-by="xiumi.us"><section style="font-size:13px;line-height:33px;;text-align: justify;box-sizing: border-box;"><p style="white-space: normal;box-sizing: border-box;">本文为Lens微信公号“WeLens”（ID：we-lens）授权转载。</p><p style="white-space: normal;box-sizing: border-box;"><br  /></p><p style="white-space: normal;box-sizing: border-box;">Lens 是一个致力于发现创造与美、探求生活价值、传递人性温暖的文化传播品牌。</p></section></section></section></section></section><br  /></section><section style="margin-top: 0.5em;margin-bottom: 0.5em;text-align: center;box-sizing: border-box;" powered-by="xiumi.us"><section style="margin-top: 12px;display: inline-block;vertical-align: top;float: left;width: 43%;border-width: 1px;border-style: solid;border-color: rgb(240, 117, 158);box-sizing: border-box;"></section><section style="display: inline-block;vertical-align: top;width: 8.5%;margin-top: 0.5px;background-color: rgb(240, 117, 158);line-height: 0;box-sizing: border-box;"><img class="raw-image" data-ratio="0.9592357" src="https://may-love.oss-cn-beijing.aliyuncs.com/2019-06-05_大数据打脸性别偏见/2_gyZUkIQn3ALr6ZGiaLAmgEdTcIpvzw.png" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_png/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgE2biaK02BiaibhmoPFLV4TWVS4JUgyZUkIQn3ALr6ZGiaLAmgEdTcIpvzw/640?wx_fmt=png'" data-type="png" data-w="785" style="vertical-align: middle;width: 100%;box-sizing: border-box;"></section><section style="display: inline-block;vertical-align: top;width: 43%;margin-top: 12px;border-width: 1px;border-style: solid;border-color: rgb(240, 117, 158);float: right;box-sizing: border-box;"></section><section style="clear: both;box-sizing: border-box;"></section></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;">如果说，“女性比男性更不在乎钻戒和婚纱”“女性和男性遭受过家暴的比例几乎一致”“从事专业技术工作更多的是女性”，你会不会感到有些惊讶？<br style="box-sizing: border-box;"  /></p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p><p style="white-space: normal;box-sizing: border-box;">生活里存在着很多刻板印象，涉及男女比较的尤其多。</p><p style="white-space: normal;box-sizing: border-box;">这次，就用大数据来回击吧。</p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="margin: 10px 0%;box-sizing: border-box;" powered-by="xiumi.us"><section style="display: inline-block;vertical-align: top;width: 13%;box-sizing: border-box;"><section style="text-align: center;margin-right: 0%;margin-left: 0%;box-sizing: border-box;" powered-by="xiumi.us"><section style="max-width: 100%;vertical-align: middle;display: inline-block;line-height: 0;border-style: solid;border-width: 0px;border-radius: 50%;border-color: rgb(255, 202, 0);overflow: hidden;width: 100%;box-sizing: border-box;"><img class="raw-image" data-ratio="1" src="https://may-love.oss-cn-beijing.aliyuncs.com/2019-06-05_大数据打脸性别偏见/3_XsDZCsQLRNQGibSfEVtZpAuTCxicyw.png" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_png/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgRzViaDgu2j2cZHdwIR2dWiceEE9HXsDZCsQLRNQGibSfEVtZpAuTCxicyw/640?wx_fmt=png'" data-type="png" data-w="640" style="vertical-align: middle;width: 100%;box-sizing: border-box;"></section></section></section><section style="display: inline-block;vertical-align: top;width: 87%;border-width: 2px;border-radius: 0px;border-style: none;border-color: rgb(62, 62, 62);box-sizing: border-box;"><section style="margin-top: 15px;margin-right: 0%;margin-left: 0%;text-align: left;transform: translate3d(-2px, 0px, 0px);box-sizing: border-box;" powered-by="xiumi.us"><section style="display: inline-block;vertical-align: top;padding-left: 6px;box-sizing: border-box;"><section style="margin-left: 6px;padding-right: 5px;padding-bottom: 2px;padding-left: 5px;border-bottom: 1px solid rgb(249, 115, 139);border-top-color: rgb(249, 115, 139);border-right-color: rgb(249, 115, 139);border-left-color: rgb(249, 115, 139);margin-right: 6px;color: rgb(86, 86, 86);font-size:16px;line-height:36px;;box-sizing: border-box;"><p style="box-sizing: border-box;"><strong style="box-sizing: border-box;">职业中的性别偏见</strong></p></section><section style="height: 22px;border-left: 1px solid rgb(249, 115, 139);margin-top: -21px;transform: rotate(-30deg);-webkit-transform: rotate(-30deg);-moz-transform: rotate(-30deg);-o-transform: rotate(-30deg);transform-origin: 0px center;-webkit-transform-origin: 0px center;-moz-transform-origin: 0px center;-o-transform-origin: 0px center;border-top-color: rgb(249, 115, 139);border-right-color: rgb(249, 115, 139);border-bottom-color: rgb(249, 115, 139);box-sizing: border-box;"></section></section></section></section></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="color: rgb(255, 255, 255);box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><strong style="box-sizing: border-box;"><span style="background-color: rgb(184, 47, 73);box-sizing: border-box;">&nbsp; 印象1：“女司机都是马路杀手”&nbsp;</span></strong></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="text-align: center;margin-top: 10px;margin-bottom: 10px;box-sizing: border-box;" powered-by="xiumi.us"><section style="max-width: 100%;vertical-align: middle;display: inline-block;line-height: 0;box-sizing: border-box;"><img class="raw-image" data-ratio="0.9935185" src="https://may-love.oss-cn-beijing.aliyuncs.com/2019-06-05_大数据打脸性别偏见/4_PcaRbnTRKSRc04NS6yvjgjxlFqTNpA.jpg" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgzsUdEQsY62ordR0NpLgRKLKicPcaRbnTRKSRc04NS6yvjgjxlFqTNpA/640?wx_fmt=jpeg'" data-type="jpeg" data-w="1080" style="vertical-align: middle;box-sizing: border-box;"></section></section><section style="text-align: center;font-size:12px;line-height:32px;;color: rgb(135, 135, 135);box-sizing: border-box;" powered-by="xiumi.us"><p style="box-sizing: border-box;">计算比例时已经排除男女司机数量不同的影响</p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="color: rgb(255, 255, 255);box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><strong style="box-sizing: border-box;"><span style="background-color: rgb(184, 47, 73);box-sizing: border-box;">&nbsp; 印象2：“技术人员大多都是男性”&nbsp;</span></strong></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="text-align: center;margin-top: 10px;margin-bottom: 10px;box-sizing: border-box;" powered-by="xiumi.us"><section style="max-width: 100%;vertical-align: middle;display: inline-block;line-height: 0;box-sizing: border-box;"><img class="raw-image" data-ratio="1.8453704" src="https://may-love.oss-cn-beijing.aliyuncs.com/2019-06-05_大数据打脸性别偏见/5_L8MZ7aunZILibK0tOWLV3sE8l87qBQ.jpg" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgWjh35h3NrGY99GTJXyDPXosBJL8MZ7aunZILibK0tOWLV3sE8l87qBQ/640?wx_fmt=jpeg'" data-type="jpeg" data-w="1080" style="vertical-align: middle;box-sizing: border-box;"></section></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;">不仅职场现实并不符合以上的性别偏见，实际上许多刻板印象中男性主导的职业和技术开创者也是女性：</p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="text-align: center;margin-top: 10px;margin-bottom: 10px;box-sizing: border-box;" powered-by="xiumi.us"><section style="max-width: 100%;vertical-align: middle;display: inline-block;line-height: 0;box-sizing: border-box;"><img class="raw-image" data-ratio="0.687963" src="https://may-love.oss-cn-beijing.aliyuncs.com/2019-06-05_大数据打脸性别偏见/6_wXPTYklyofs2LkLHmBxSgClqsT7PHQ.jpg" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgLN8icL9orKmUd6WMOQQRDbD2SwXPTYklyofs2LkLHmBxSgClqsT7PHQ/640?wx_fmt=jpeg'" data-type="jpeg" data-w="1080" style="vertical-align: middle;box-sizing: border-box;"></section></section><section style="font-size:12px;line-height:32px;;color: rgb(135, 135, 135);box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;">世界上第一名程序员：拜伦之女 Ada Lovelace。</p><p style="white-space: normal;box-sizing: border-box;">她是数学家、穿孔机程序创始人，建立了循环和子程序概念。</p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="text-align: center;margin-top: 10px;margin-bottom: 10px;box-sizing: border-box;" powered-by="xiumi.us"><section style="max-width: 100%;vertical-align: middle;display: inline-block;line-height: 0;box-sizing: border-box;"><img class="raw-image" data-ratio="1.2445596" src="https://may-love.oss-cn-beijing.aliyuncs.com/2019-06-05_大数据打脸性别偏见/7_6yQK06DqgosLy1I5BGRQtglGHHic6A.jpg" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgvicdTYvrte4aIv7w7F3S1tuPHa6yQK06DqgosLy1I5BGRQtglGHHic6A/640?wx_fmt=jpeg'" data-type="jpeg" data-w="965" style="vertical-align: middle;box-sizing: border-box;"></section></section><section style="font-size:12px;line-height:32px;;color: rgb(135, 135, 135);box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;">为世界上第一部便携式计算机写代码，阿波罗登月计划的主要代码撰写者：玛格丽特·汉密尔顿。</p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="text-align: center;margin-top: 10px;margin-bottom: 10px;box-sizing: border-box;" powered-by="xiumi.us"><section style="max-width: 100%;vertical-align: middle;display: inline-block;line-height: 0;box-sizing: border-box;"><img class="raw-image" data-ratio="0.9897646" src="https://may-love.oss-cn-beijing.aliyuncs.com/2019-06-05_大数据打脸性别偏见/8_ribL9gDfq3LcYZAuYWwhYVR8pGdMmw.jpg" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgWFqnXhOEveoiaa38ZmBxOKhQNeribL9gDfq3LcYZAuYWwhYVR8pGdMmw/640?wx_fmt=jpeg'" data-type="jpeg" data-w="977" style="vertical-align: middle;box-sizing: border-box;"></section></section><section style="font-size:12px;line-height:32px;;color: rgb(135, 135, 135);box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;">计算机语言领域的开拓者 格蕾丝·霍波</p><p style="white-space: normal;box-sizing: border-box;">设计了第一个编译程序，发现了世界上第一个bug。</p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="text-align: center;margin-top: 10px;margin-bottom: 10px;box-sizing: border-box;" powered-by="xiumi.us"><section style="max-width: 100%;vertical-align: middle;display: inline-block;line-height: 0;box-sizing: border-box;"><img class="raw-image" data-ratio="0.7972222" src="https://may-love.oss-cn-beijing.aliyuncs.com/2019-06-05_大数据打脸性别偏见/9_VqTicoVpSnADXeWC92oKncvkjD3qoQ.jpg" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgFk1Sic7Tia2vmFasLpiagBxxedOXVqTicoVpSnADXeWC92oKncvkjD3qoQ/640?wx_fmt=jpeg'" data-type="jpeg" data-w="1080" style="vertical-align: middle;box-sizing: border-box;"></section></section><section style="font-size:12px;line-height:32px;;color: rgb(135, 135, 135);box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;">Wi-Fi之母：海蒂拉玛。她是四十年代的电影明星，从纳粹出逃的好莱坞女神，同时也是Wi-Fi技术基础理论的奠基人之一，无线电最重要技术之一调频-扩频技术的专利持有者。</p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="text-align: center;margin-top: 10px;margin-bottom: 10px;box-sizing: border-box;" powered-by="xiumi.us"><section style="max-width: 100%;vertical-align: middle;display: inline-block;line-height: 0;box-sizing: border-box;"><img class="raw-image" data-ratio="0.562963" src="https://may-love.oss-cn-beijing.aliyuncs.com/2019-06-05_大数据打脸性别偏见/10_HxKhdH1JDTLEYU7N3AIzdjXlickGMw.jpg" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSg8efslLdS3TIXQvapLfZSpUiaIjHxKhdH1JDTLEYU7N3AIzdjXlickGMw/640?wx_fmt=jpeg'" data-type="jpeg" data-w="1080" style="vertical-align: middle;box-sizing: border-box;"></section></section><section style="font-size:12px;line-height:32px;;color: rgb(135, 135, 135);box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;">世界上第一名长途自驾司机：贝尔塔·本茨。正是她打破当时人们对于汽车的成见，才帮助奔驰取得了初步的发展。</p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;">同时，也有一些被认为是女性从事的职业，比如从“裁缝”到服装设计师，其中的很多杰出人士都是男性。</p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="margin: 10px 0%;box-sizing: border-box;" powered-by="xiumi.us"><section style="display: inline-block;vertical-align: top;width: 13%;box-sizing: border-box;"><section style="text-align: center;margin-right: 0%;margin-left: 0%;box-sizing: border-box;" powered-by="xiumi.us"><section style="max-width: 100%;vertical-align: middle;display: inline-block;line-height: 0;border-style: solid;border-width: 0px;border-radius: 50%;border-color: rgb(255, 202, 0);overflow: hidden;width: 100%;box-sizing: border-box;"><img class="raw-image" data-ratio="1" src="https://may-love.oss-cn-beijing.aliyuncs.com/2019-06-05_大数据打脸性别偏见/11_XsDZCsQLRNQGibSfEVtZpAuTCxicyw.png" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_png/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgRzViaDgu2j2cZHdwIR2dWiceEE9HXsDZCsQLRNQGibSfEVtZpAuTCxicyw/640?wx_fmt=png'" data-type="png" data-w="640" style="vertical-align: middle;width: 100%;box-sizing: border-box;"></section></section></section><section style="display: inline-block;vertical-align: top;width: 87%;border-width: 2px;border-radius: 0px;border-style: none;border-color: rgb(62, 62, 62);box-sizing: border-box;"><section style="margin-top: 15px;margin-right: 0%;margin-left: 0%;text-align: left;transform: translate3d(-2px, 0px, 0px);box-sizing: border-box;" powered-by="xiumi.us"><section style="display: inline-block;vertical-align: top;padding-left: 6px;box-sizing: border-box;"><section style="margin-left: 6px;padding-right: 5px;padding-bottom: 2px;padding-left: 5px;border-bottom: 1px solid rgb(249, 115, 139);border-top-color: rgb(249, 115, 139);border-right-color: rgb(249, 115, 139);border-left-color: rgb(249, 115, 139);margin-right: 6px;color: rgb(86, 86, 86);font-size:16px;line-height:36px;;box-sizing: border-box;"><p style="box-sizing: border-box;"><strong style="box-sizing: border-box;">婚恋中的性别偏见</strong></p></section><section style="height: 22px;border-left: 1px solid rgb(249, 115, 139);margin-top: -21px;transform: rotate(-30deg);-webkit-transform: rotate(-30deg);-moz-transform: rotate(-30deg);-o-transform: rotate(-30deg);transform-origin: 0px center;-webkit-transform-origin: 0px center;-moz-transform-origin: 0px center;-o-transform-origin: 0px center;border-top-color: rgb(249, 115, 139);border-right-color: rgb(249, 115, 139);border-bottom-color: rgb(249, 115, 139);box-sizing: border-box;"></section></section></section></section></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="color: rgb(255, 255, 255);box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><strong style="box-sizing: border-box;"><span style="background-color: rgb(184, 47, 73);box-sizing: border-box;">&nbsp; 刻板印象1：“女性会当然地更看重家庭”&nbsp;</span></strong></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;">但从数据调查来看，认为“爱情比事业重要”的，男性反而居多。</p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="text-align: center;margin-top: 10px;margin-bottom: 10px;box-sizing: border-box;" powered-by="xiumi.us"><section style="max-width: 100%;vertical-align: middle;display: inline-block;line-height: 0;box-sizing: border-box;"><img class="raw-image" data-ratio="0.8509259" src="https://may-love.oss-cn-beijing.aliyuncs.com/2019-06-05_大数据打脸性别偏见/12_aYbT0NgacHbSI0XzpFJ9nYNqXPFN7g.jpg" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgnHeWnicCdicEhRdOQBgjQAt2n0iaYbT0NgacHbSI0XzpFJ9nYNqXPFN7g/640?wx_fmt=jpeg'" data-type="jpeg" data-w="1080" style="vertical-align: middle;box-sizing: border-box;"></section></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;">而且，同来源的数据显示：<br style="box-sizing: border-box;"  /></p><p style="white-space: normal;box-sizing: border-box;">认为婚姻是必需品的，男性为75.65%，女性为49.33%。</p><p style="white-space: normal;box-sizing: border-box;">在单身人士中，“想赶紧脱单”的，男性为57.68%，女性为45.92%。</p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="color: rgb(255, 255, 255);box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><strong style="box-sizing: border-box;"><span style="background-color: rgb(184, 47, 73);box-sizing: border-box;">&nbsp; 刻板印象2：“女性会更讲究婚礼的排场和仪式感”&nbsp;</span></strong></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;">来看几组数据：<br style="box-sizing: border-box;"  /></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="text-align: center;margin-top: 10px;margin-bottom: 10px;box-sizing: border-box;" powered-by="xiumi.us"><section style="max-width: 100%;vertical-align: middle;display: inline-block;line-height: 0;box-sizing: border-box;"><img class="raw-image" data-ratio="0.6010638" src="https://may-love.oss-cn-beijing.aliyuncs.com/2019-06-05_大数据打脸性别偏见/13_Lszib3uKSxia5uqcSOz7agrPJ2Btrw.png" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_png/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgGyaeYkiadRNPuJrEwHfibSWKb9VuLszib3uKSxia5uqcSOz7agrPJ2Btrw/640?wx_fmt=png'" data-type="png" data-w="752" style="vertical-align: middle;box-sizing: border-box;"></section></section><section style="text-align: center;margin-top: 10px;margin-bottom: 10px;box-sizing: border-box;" powered-by="xiumi.us"><section style="max-width: 100%;vertical-align: middle;display: inline-block;line-height: 0;box-sizing: border-box;"><img class="raw-image" data-ratio="0.8085106" src="https://may-love.oss-cn-beijing.aliyuncs.com/2019-06-05_大数据打脸性别偏见/14_Hu5jD4VOibE782acKwkL8asnLDLsKA.png" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_png/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgTNWrOkboK6uguNibETf5dd7dsHHu5jD4VOibE782acKwkL8asnLDLsKA/640?wx_fmt=png'" data-type="png" data-w="752" style="vertical-align: middle;box-sizing: border-box;"></section></section><section style="text-align: center;margin-top: 10px;margin-bottom: 10px;box-sizing: border-box;" powered-by="xiumi.us"><section style="max-width: 100%;vertical-align: middle;display: inline-block;line-height: 0;box-sizing: border-box;"><img class="raw-image" data-ratio="0.6010638" src="https://may-love.oss-cn-beijing.aliyuncs.com/2019-06-05_大数据打脸性别偏见/15_vKT3bdoN3ztqeG8pSUseTfs7LLn5kQ.png" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_png/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgK5H64JxEkUHhJhu2bd1hw3ic4vKT3bdoN3ztqeG8pSUseTfs7LLn5kQ/640?wx_fmt=png'" data-type="png" data-w="752" style="vertical-align: middle;box-sizing: border-box;"></section></section><section style="font-size:12px;line-height:32px;;color: rgb(135, 135, 135);box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;">数据来源：百合网《2017中国婚礼状况调研报告》</p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;">可以看出，在蜜月和钻戒预算上女性的平均期望比男性更低，在钻戒预算中甚至有更多的女性认为不需要。婚纱礼服价格预算则几乎没有差别。<br style="box-sizing: border-box;"  /></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="color: rgb(255, 255, 255);box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><strong style="box-sizing: border-box;"><span style="background-color: rgb(184, 47, 73);box-sizing: border-box;">&nbsp; 刻板印象3：“女性希望由男性出婚房”&nbsp;</span></strong></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="text-align: center;margin-top: 10px;margin-bottom: 10px;box-sizing: border-box;" powered-by="xiumi.us"><section style="max-width: 100%;vertical-align: middle;display: inline-block;line-height: 0;box-sizing: border-box;"><img class="raw-image" data-ratio="0.599734" src="https://may-love.oss-cn-beijing.aliyuncs.com/2019-06-05_大数据打脸性别偏见/16_I0yIawHwfujBF3GnkibgECibLibUyQ.jpg" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgAsNDeM5UIPjy3M4Ge2dKNrF3UHjI0yIawHwfujBF3GnkibgECibLibUyQ/640?wx_fmt=jpeg'" data-type="jpeg" data-w="752" style="vertical-align: middle;box-sizing: border-box;"></section></section><section style="font-size:12px;line-height:32px;;color: rgb(135, 135, 135);box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;">数据来源：百合网《2017中国婚礼状况调研报告》</p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;">根据上述数据，认为应该男方出钱的女性只有不到四成。<br style="box-sizing: border-box;"  /></p><p style="white-space: normal;box-sizing: border-box;">而另据贝壳发布的《2019年女性安居报告》显示：去年，女性购房者比例整体达到了46.7%，与男性购房者比例接近。</p><p style="white-space: normal;box-sizing: border-box;">74.2%的受访女性说，她们是在没有伴侣提供经济支持的情况下买房的。45.2%的人在父母提供经济支持的情况下买房，29%的人完全靠自己买房。</p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="margin: 10px 0%;box-sizing: border-box;" powered-by="xiumi.us"><section style="display: inline-block;vertical-align: top;width: 13%;box-sizing: border-box;"><section style="text-align: center;margin-right: 0%;margin-left: 0%;box-sizing: border-box;" powered-by="xiumi.us"><section style="max-width: 100%;vertical-align: middle;display: inline-block;line-height: 0;border-style: solid;border-width: 0px;border-radius: 50%;border-color: rgb(255, 202, 0);overflow: hidden;width: 100%;box-sizing: border-box;"><img class="raw-image" data-ratio="1" src="https://may-love.oss-cn-beijing.aliyuncs.com/2019-06-05_大数据打脸性别偏见/17_XsDZCsQLRNQGibSfEVtZpAuTCxicyw.png" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_png/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgRzViaDgu2j2cZHdwIR2dWiceEE9HXsDZCsQLRNQGibSfEVtZpAuTCxicyw/640?wx_fmt=png'" data-type="png" data-w="640" style="vertical-align: middle;width: 100%;box-sizing: border-box;"></section></section></section><section style="display: inline-block;vertical-align: top;width: 87%;border-width: 2px;border-radius: 0px;border-style: none;border-color: rgb(62, 62, 62);box-sizing: border-box;"><section style="margin-top: 15px;margin-right: 0%;margin-left: 0%;text-align: left;transform: translate3d(-2px, 0px, 0px);box-sizing: border-box;" powered-by="xiumi.us"><section style="display: inline-block;vertical-align: top;padding-left: 6px;box-sizing: border-box;"><section style="margin-left: 6px;padding-right: 5px;padding-bottom: 2px;padding-left: 5px;border-bottom: 1px solid rgb(249, 115, 139);border-top-color: rgb(249, 115, 139);border-right-color: rgb(249, 115, 139);border-left-color: rgb(249, 115, 139);margin-right: 6px;color: rgb(86, 86, 86);font-size:16px;line-height:36px;;box-sizing: border-box;"><p style="box-sizing: border-box;"><strong style="box-sizing: border-box;">受害/施暴关系中的性别偏见</strong></p></section><section style="height: 22px;border-left: 1px solid rgb(249, 115, 139);margin-top: -21px;transform: rotate(-30deg);-webkit-transform: rotate(-30deg);-moz-transform: rotate(-30deg);-o-transform: rotate(-30deg);transform-origin: 0px center;-webkit-transform-origin: 0px center;-moz-transform-origin: 0px center;-o-transform-origin: 0px center;border-top-color: rgb(249, 115, 139);border-right-color: rgb(249, 115, 139);border-bottom-color: rgb(249, 115, 139);box-sizing: border-box;"></section></section></section></section></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;">很多人的印象里，女性和弱者、受害者划等号，男性则更可能是施暴者。一些恶性事件中，提到受害者人们会下意识地忽视掉男性。<br style="box-sizing: border-box;"  /></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="color: rgb(255, 255, 255);box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><strong style="box-sizing: border-box;"><span style="background-color: rgb(184, 47, 73);box-sizing: border-box;">&nbsp; 刻板印象1：“只有女性会受到性侵害”&nbsp;</span></strong></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;">事实上，在性侵案中，男童与女童受到性侵害的比例几乎一致。</p><p style="white-space: normal;box-sizing: border-box;">学者方向明在向世卫组织提交的一项报告中称，其研究文献中提及的女童被性侵的比例，在7.5%~11.5%之间；男童被性侵的比例则是6.5%~9.6%。</p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p><p style="white-space: normal;box-sizing: border-box;">广东省疾病控制与预防中心在2005年时做的一项抽样调查，更发现：在青少年中，男生受到性侵害的，是女生的2.2-2.3倍。</p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="color: rgb(255, 255, 255);box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><strong style="box-sizing: border-box;"><span style="background-color: rgb(184, 47, 73);box-sizing: border-box;">&nbsp; 刻板印象2：“家暴都是男的施暴女的”&nbsp;</span></strong></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;">根据政府的数据，男女遭受家暴的比例并不悬殊。</p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="text-align: center;margin-top: 10px;margin-bottom: 10px;box-sizing: border-box;" powered-by="xiumi.us"><section style="max-width: 100%;vertical-align: middle;display: inline-block;line-height: 0;box-sizing: border-box;"><img class="raw-image" data-ratio="0.9935185" src="https://may-love.oss-cn-beijing.aliyuncs.com/2019-06-05_大数据打脸性别偏见/18_eN4str6mXkJQA2baZScDzP0VqKbQ1g.jpg" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgdBtB2DYeloxibAqHSAgEBdAiaEeN4str6mXkJQA2baZScDzP0VqKbQ1g/640?wx_fmt=jpeg'" data-type="jpeg" data-w="1080" style="vertical-align: middle;box-sizing: border-box;"></section></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;">而男性遭遇家暴这个数字在美国是28%，在英国超过了三分之一。</p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  />今年3月27日，湖南省出台了草案，拟将男性纳入家暴保护对象，引起了热议。</p><p style="white-space: normal;box-sizing: border-box;">而以往男性遭遇家暴时，因为没有对应的帮扶组织，一般是投诉到妇联。</p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p><p style="white-space: normal;box-sizing: border-box;">需要说明的是：家暴的受害者认知固定往往源自男性和女性生理力量的天然差别，但家庭暴力并不仅限于身体暴力，还包括语言侮辱，金钱控制等等一系列行为。</p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="color: rgb(255, 255, 255);box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><strong style="box-sizing: border-box;"><span style="background-color: rgb(184, 47, 73);box-sizing: border-box;">&nbsp; 刻板印象3：“只有女性会受到就业歧视”&nbsp;</span></strong></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;">在上海社会科学院2016年发布的一份调查中，表示没有遭受过职业歧视经历的女性占70.50%,而男性的对应比例则只有65.40%。</p><p style="white-space: normal;box-sizing: border-box;">也就是说，更多男性遭遇了职业歧视。</p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;">不过，他们遭受歧视的原因有所不同。</p><p style="white-space: normal;box-sizing: border-box;">统计显示：男性员工更容易因“学历”（19.30%)、“年龄”（12.20%)、“户籍”（5.80%)、“背 景”（2.60%)等原因而被歧视，而职场女性受歧视的原因则主要是“性别”（5.10%) 和“外貌”（1.60%)等。</p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="margin: 10px 0%;box-sizing: border-box;" powered-by="xiumi.us"><section style="display: inline-block;vertical-align: top;width: 13%;box-sizing: border-box;"><section style="text-align: center;margin-right: 0%;margin-left: 0%;box-sizing: border-box;" powered-by="xiumi.us"><section style="max-width: 100%;vertical-align: middle;display: inline-block;line-height: 0;border-style: solid;border-width: 0px;border-radius: 50%;border-color: rgb(255, 202, 0);overflow: hidden;width: 100%;box-sizing: border-box;"><img class="raw-image" data-ratio="1" src="https://may-love.oss-cn-beijing.aliyuncs.com/2019-06-05_大数据打脸性别偏见/19_XsDZCsQLRNQGibSfEVtZpAuTCxicyw.png" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_png/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgRzViaDgu2j2cZHdwIR2dWiceEE9HXsDZCsQLRNQGibSfEVtZpAuTCxicyw/640?wx_fmt=png'" data-type="png" data-w="640" style="vertical-align: middle;width: 100%;box-sizing: border-box;"></section></section></section><section style="display: inline-block;vertical-align: top;width: 87%;border-width: 2px;border-radius: 0px;border-style: none;border-color: rgb(62, 62, 62);box-sizing: border-box;"><section style="margin-top: 15px;margin-right: 0%;margin-left: 0%;text-align: left;transform: translate3d(-2px, 0px, 0px);box-sizing: border-box;" powered-by="xiumi.us"><section style="display: inline-block;vertical-align: top;padding-left: 6px;box-sizing: border-box;"><section style="margin-left: 6px;padding-right: 5px;padding-bottom: 2px;padding-left: 5px;border-bottom: 1px solid rgb(249, 115, 139);border-top-color: rgb(249, 115, 139);border-right-color: rgb(249, 115, 139);border-left-color: rgb(249, 115, 139);margin-right: 6px;color: rgb(86, 86, 86);font-size:16px;line-height:36px;;box-sizing: border-box;"><p style="box-sizing: border-box;"><strong style="box-sizing: border-box;">消费方面的性别偏见</strong></p></section><section style="height: 22px;border-left: 1px solid rgb(249, 115, 139);margin-top: -21px;transform: rotate(-30deg);-webkit-transform: rotate(-30deg);-moz-transform: rotate(-30deg);-o-transform: rotate(-30deg);transform-origin: 0px center;-webkit-transform-origin: 0px center;-moz-transform-origin: 0px center;-o-transform-origin: 0px center;border-top-color: rgb(249, 115, 139);border-right-color: rgb(249, 115, 139);border-bottom-color: rgb(249, 115, 139);box-sizing: border-box;"></section></section></section></section></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="color: rgb(255, 255, 255);box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><strong style="box-sizing: border-box;"><span style="background-color: rgb(184, 47, 73);box-sizing: border-box;">&nbsp; 刻板印象1：“女性往往比男性更喜欢网上购物”&nbsp;</span></strong></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;">据美国互动广吿局（IAB)与IAB中国联合发布的调査结果表明，无论是从PC端还是移动端进行网购的中国居民，男性消费者占比均超过女性。</p><p style="white-space: normal;box-sizing: border-box;">其中，PC端网购，男女占比分别为57%和43%；移动端网购，男女占比则为53%和47%。</p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="color: rgb(255, 255, 255);box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><strong style="box-sizing: border-box;"><span style="background-color: rgb(184, 47, 73);box-sizing: border-box;">&nbsp; 刻板印象2：“女性更喜欢购买衣物美妆，而男性对电子设备和游戏产品情有独钟”&nbsp;</span></strong></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="text-align: center;margin-top: 10px;margin-bottom: 10px;box-sizing: border-box;" powered-by="xiumi.us"><section style="max-width: 100%;vertical-align: middle;display: inline-block;line-height: 0;box-sizing: border-box;"><img class="raw-image" data-ratio="0.8509259" src="https://may-love.oss-cn-beijing.aliyuncs.com/2019-06-05_大数据打脸性别偏见/20_jmjgyiaaCricdNBMSutPvlJZg2285g.jpg" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgibPKqRItFpJGoKichia2vOcHVmialRjmjgyiaaCricdNBMSutPvlJZg2285g/640?wx_fmt=jpeg'" data-type="jpeg" data-w="1080" style="vertical-align: middle;box-sizing: border-box;"></section></section><section style="text-align: center;margin-top: 10px;margin-bottom: 10px;box-sizing: border-box;" powered-by="xiumi.us"><section style="max-width: 100%;vertical-align: middle;display: inline-block;line-height: 0;box-sizing: border-box;"><img class="raw-image" data-ratio="1.2" src="https://may-love.oss-cn-beijing.aliyuncs.com/2019-06-05_大数据打脸性别偏见/21_t8GBjWKlkeDAnza1yEvMeEialwIhSQ.jpg" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgDSqp241HXRAZanAicLCZ5soWsft8GBjWKlkeDAnza1yEvMeEialwIhSQ/640?wx_fmt=jpeg'" data-type="jpeg" data-w="1080" style="vertical-align: middle;box-sizing: border-box;"></section></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="margin: 10px 0%;box-sizing: border-box;" powered-by="xiumi.us"><section style="display: inline-block;vertical-align: top;width: 13%;box-sizing: border-box;"><section style="text-align: center;margin-right: 0%;margin-left: 0%;box-sizing: border-box;" powered-by="xiumi.us"><section style="max-width: 100%;vertical-align: middle;display: inline-block;line-height: 0;border-style: solid;border-width: 0px;border-radius: 50%;border-color: rgb(255, 202, 0);overflow: hidden;width: 100%;box-sizing: border-box;"><img class="raw-image" data-ratio="1" src="https://may-love.oss-cn-beijing.aliyuncs.com/2019-06-05_大数据打脸性别偏见/22_XsDZCsQLRNQGibSfEVtZpAuTCxicyw.png" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_png/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgRzViaDgu2j2cZHdwIR2dWiceEE9HXsDZCsQLRNQGibSfEVtZpAuTCxicyw/640?wx_fmt=png'" data-type="png" data-w="640" style="vertical-align: middle;width: 100%;box-sizing: border-box;"></section></section></section><section style="display: inline-block;vertical-align: top;width: 87%;border-width: 2px;border-radius: 0px;border-style: none;border-color: rgb(62, 62, 62);box-sizing: border-box;"><section style="margin-top: 15px;margin-right: 0%;margin-left: 0%;text-align: left;transform: translate3d(-2px, 0px, 0px);box-sizing: border-box;" powered-by="xiumi.us"><section style="display: inline-block;vertical-align: top;padding-left: 6px;box-sizing: border-box;"><section style="margin-left: 6px;padding-right: 5px;padding-bottom: 2px;padding-left: 5px;border-bottom: 1px solid rgb(249, 115, 139);border-top-color: rgb(249, 115, 139);border-right-color: rgb(249, 115, 139);border-left-color: rgb(249, 115, 139);margin-right: 6px;color: rgb(86, 86, 86);font-size:16px;line-height:36px;;box-sizing: border-box;"><p style="box-sizing: border-box;"><strong style="box-sizing: border-box;">人格倾向中的性别偏见</strong></p></section><section style="height: 22px;border-left: 1px solid rgb(249, 115, 139);margin-top: -21px;transform: rotate(-30deg);-webkit-transform: rotate(-30deg);-moz-transform: rotate(-30deg);-o-transform: rotate(-30deg);transform-origin: 0px center;-webkit-transform-origin: 0px center;-moz-transform-origin: 0px center;-o-transform-origin: 0px center;border-top-color: rgb(249, 115, 139);border-right-color: rgb(249, 115, 139);border-bottom-color: rgb(249, 115, 139);box-sizing: border-box;"></section></section></section></section></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="color: rgb(255, 255, 255);box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><strong style="box-sizing: border-box;"><span style="background-color: rgb(184, 47, 73);box-sizing: border-box;">&nbsp; 刻板印象1：“女性更容易受骗”&nbsp;</span></strong></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="text-align: center;margin-top: 10px;margin-bottom: 10px;box-sizing: border-box;" powered-by="xiumi.us"><section style="max-width: 100%;vertical-align: middle;display: inline-block;line-height: 0;box-sizing: border-box;"><img class="raw-image" data-ratio="1.2990741" src="https://may-love.oss-cn-beijing.aliyuncs.com/2019-06-05_大数据打脸性别偏见/23_MQgXgT9MzCBrJrSub2wRWVPeD365Ow.jpg" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSghRRiaibbVsfAMK6t7JLrKR0diaEMQgXgT9MzCBrJrSub2wRWVPeD365Ow/640?wx_fmt=jpeg'" data-type="jpeg" data-w="1080" style="vertical-align: middle;box-sizing: border-box;"></section></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;">事实上，在多种诈骗类型中，都是男性更容易受到伤害。</p><p style="white-space: normal;box-sizing: border-box;">尤其值得关注的是男性受到情感类诈骗的比例远远高于女性，似乎也驳斥了女性更加感性，而男性更加理智的刻板印象。</p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="color: rgb(255, 255, 255);box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><strong style="box-sizing: border-box;"><span style="background-color: rgb(184, 47, 73);box-sizing: border-box;">&nbsp; 刻板印象2：“女性更脆弱，更容易受到伤害”&nbsp;</span></strong></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;">根据美国相关犯罪数据显示，在90%的谋杀犯是男性的同时，谋杀的受害者中77%是男性。</p><p style="white-space: normal;box-sizing: border-box;">从人口统计学上来看，男性群体更容易成为暴力犯罪的受害者。</p><p style="white-space: normal;box-sizing: border-box;">男性死于自杀的可能性是女性的3.5倍，而他们的预期寿命比女性短4.9年。</p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="color: rgb(255, 255, 255);box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><strong style="box-sizing: border-box;"><span style="background-color: rgb(184, 47, 73);box-sizing: border-box;">&nbsp; 刻板印象3：“男性更爱看‘小电影’？”&nbsp;</span></strong></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="text-align: center;margin-top: 10px;margin-bottom: 10px;box-sizing: border-box;" powered-by="xiumi.us"><section style="max-width: 100%;vertical-align: middle;display: inline-block;line-height: 0;box-sizing: border-box;"><img class="raw-image" data-ratio="1.0717647" src="https://may-love.oss-cn-beijing.aliyuncs.com/2019-06-05_大数据打脸性别偏见/24_zDVuKDr3mZkylnBHD1NpF2wn6aAjOg.jpg" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSghkswQE2SMGIFtLbiaXjSlerypzDVuKDr3mZkylnBHD1NpF2wn6aAjOg/640?wx_fmt=jpeg'" data-type="jpeg" data-w="850" style="vertical-align: middle;box-sizing: border-box;"></section></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="margin-top: 0.5em;margin-bottom: 0.5em;text-align: center;box-sizing: border-box;" powered-by="xiumi.us"><section style="margin-top: 12px;display: inline-block;vertical-align: top;float: left;width: 43%;border-width: 1px;border-style: solid;border-color: rgb(240, 117, 158);box-sizing: border-box;"></section><section style="display: inline-block;vertical-align: top;width: 8.5%;margin-top: 0.5px;background-color: rgb(240, 117, 158);line-height: 0;box-sizing: border-box;"><img class="raw-image" data-ratio="0.9592357" src="https://may-love.oss-cn-beijing.aliyuncs.com/2019-06-05_大数据打脸性别偏见/25_gyZUkIQn3ALr6ZGiaLAmgEdTcIpvzw.png" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_png/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgE2biaK02BiaibhmoPFLV4TWVS4JUgyZUkIQn3ALr6ZGiaLAmgEdTcIpvzw/640?wx_fmt=png'" data-type="png" data-w="785" style="vertical-align: middle;width: 100%;box-sizing: border-box;"></section><section style="display: inline-block;vertical-align: top;width: 43%;margin-top: 12px;border-width: 1px;border-style: solid;border-color: rgb(240, 117, 158);float: right;box-sizing: border-box;"></section><section style="clear: both;box-sizing: border-box;"></section></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="font-size:16px;line-height:36px;;color: rgb(184, 47, 73);box-sizing: border-box;" powered-by="xiumi.us"><p style="text-align: center;white-space: normal;box-sizing: border-box;"><strong style="box-sizing: border-box;">为何有这么多性别偏见？</strong></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;">既然有相当一部分刻板印象与事实不符，为什么依然长久地维持了下去？</p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p><p style="white-space: normal;box-sizing: border-box;">这是因为人无法全面地获知超越生活范围的信息，事实认知和观念塑造很大程度上依赖媒体选择性提供和展示的信息。这就是李普曼的“拟态环境”理论。</p><p style="white-space: normal;box-sizing: border-box;">当然，在今天，社交媒体、朋友圈等等也在取代传统媒体的功能。</p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p><p style="white-space: normal;box-sizing: border-box;">在舆论中，女司机相关新闻被选择性高频报道；</p><p style="white-space: normal;box-sizing: border-box;">女性喜好购物“剁手”的形象在新闻和段子中被建立；</p><p style="white-space: normal;box-sizing: border-box;">广告中，女性固守家庭而男性奔波劳碌的二元设定已经成为常态；</p><p style="white-space: normal;box-sizing: border-box;">电视剧中，家庭关系、婚恋过程、职场生活描写下女性和男性的性格属性，人物形象、角色关系、生活矛盾也都存在模版化现象，在迎合既有偏见的同时不断进行强化。</p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="text-align: center;margin-top: 10px;margin-bottom: 10px;box-sizing: border-box;" powered-by="xiumi.us"><section style="max-width: 100%;vertical-align: middle;display: inline-block;line-height: 0;box-sizing: border-box;"><img class="raw-image" data-ratio="0.5" src="https://may-love.oss-cn-beijing.aliyuncs.com/2019-06-05_大数据打脸性别偏见/26_afCPtP8IIG1CKAFsCm3Ss6WpUyAhbw.jpg" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgAYorcfWaqlqql2NS63m5NIndiafCPtP8IIG1CKAFsCm3Ss6WpUyAhbw/640?wx_fmt=jpeg'" data-type="jpeg" data-w="640" style="vertical-align: middle;box-sizing: border-box;"></section></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;">在查阅数据过程中，我们也发现了相当一部分被数据印证的性别困境。</p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p><p style="white-space: normal;box-sizing: border-box;">比如，虽然男性可能在更大比例上受到就业歧视，但女性却更容易因性别受到歧视，差不多是男性的两倍。</p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p><p style="white-space: normal;box-sizing: border-box;">再比如，虽然女性在技术岗上的比例节节攀升，但女性在领导岗位的比例不高，甚至在下滑。<br style="box-sizing: border-box;"  /></p><p style="white-space: normal;box-sizing: border-box;">此外，女性平均薪酬只有男性77%，很多地方都存在男女同工不同酬的现象。</p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p><p style="white-space: normal;box-sizing: border-box;">最新的妇女地位调查数据报告显示，在过去10年间，认为“干得好不如嫁得好”的男性和女性比例分别上升了10.5%和10.7%。</p><p style="white-space: normal;box-sizing: border-box;">在经济不断发展，平权运动此起彼伏、女性地位不断上升的今天，又是什么催使更多的人相信“干得好不如嫁得好“呢？</p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="color: rgb(202, 15, 4);box-sizing: border-box;" powered-by="xiumi.us"><p style="text-align: center;white-space: normal;box-sizing: border-box;">▼</p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="font-size:16px;line-height:36px;;color: rgb(184, 47, 73);box-sizing: border-box;" powered-by="xiumi.us"><p style="text-align: center;white-space: normal;box-sizing: border-box;"><strong style="box-sizing: border-box;">失去标准的“越界”</strong></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;">打破刻板印象，不是单一性别要做的事，也不是彼此攻击能解决的。</p><p style="white-space: normal;box-sizing: border-box;">因为偏见其实存在于我们每个人身上。</p><p style="white-space: normal;box-sizing: border-box;">比如，知乎上有一个问题：<strong style="box-sizing: border-box;">“哪些时候让你感受到了社会对男性的歧视？”</strong></p><p style="white-space: normal;box-sizing: border-box;">有一个上万高赞的回答里提到：“男人就该忍受压力，男人怎么可以哭，男人竟然怕痛，男人被家暴好搞笑，男人怎么会被性骚扰，男人就该有阳刚之气的时候。”</p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p><p style="white-space: normal;box-sizing: border-box;">“必须认识到，所谓男性气质和女性气质完全是由文化和社会建构起来的。而不是由男女两性的解剖生理差异造成的。”社会学家李银河如此说道。</p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p><p style="white-space: normal;box-sizing: border-box;">男性气质和女性气质的区分是维持传统性别秩序的工具。</p><p style="white-space: normal;box-sizing: border-box;">它带来的后果是：使人们误以为某种性别就是某种样子的；限制独立自由的选择；要求按照规范行事。</p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p><p style="white-space: normal;box-sizing: border-box;">在这种压力下，女性容易对男性化感到恐惧，富于攻击性的、有抱负的、高智商甚至留短发打扮中性的女性被视为不够“女性”的女人；</p><p style="white-space: normal;box-sizing: border-box;">同时，男性也会因女性化感受到歧视，怕人说自己有“女人气”“娘娘腔”。</p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p><p style="white-space: normal;box-sizing: border-box;">在2000年，生物学家兼女性主义者Anne Fausto-Sterling，首次提出了性别光谱论来代替二元性别的传统概念。</p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="text-align: center;margin-top: 10px;margin-bottom: 10px;box-sizing: border-box;" powered-by="xiumi.us"><section style="max-width: 100%;vertical-align: middle;display: inline-block;line-height: 0;box-sizing: border-box;"><img class="raw-image" data-ratio="0.562963" src="https://may-love.oss-cn-beijing.aliyuncs.com/2019-06-05_大数据打脸性别偏见/27_ULiaLpibvdZXwLlddaDPxxsFd65ibQ.jpg" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgDAGL0ibrHo7XHMAFiaWXSVbpjdIcLULiaLpibvdZXwLlddaDPxxsFd65ibQ/640?wx_fmt=jpeg'" data-type="jpeg" data-w="1080" style="vertical-align: middle;box-sizing: border-box;"></section></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;">这种理论在发展中提出了性别本身是流动的，男性和女性所表现出来的特征也并非完全稳定，每个男性个体和女性个体都是千差万别、千姿百态的。</p><p style="white-space: normal;box-sizing: border-box;">因为界限并不存在，所以“越界”也就失去了标准。</p></section><section style="box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p><p style="white-space: normal;box-sizing: border-box;"><span style="color: rgb(184, 47, 73);box-sizing: border-box;"><strong style="box-sizing: border-box;">别让性别制约了你的想象力。</strong></span></p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="color: rgb(135, 135, 135);font-size:12px;line-height:32px;;box-sizing: border-box;" powered-by="xiumi.us"><p style="white-space: normal;box-sizing: border-box;">编辑整理：马越扬</p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"  /></p></section><section style="text-align: center;margin-top: 10px;margin-bottom: 10px;box-sizing: border-box;" powered-by="xiumi.us"><section style="max-width: 100%;vertical-align: middle;display: inline-block;line-height: 0;box-sizing: border-box;"><img class="raw-image" data-ratio="0.5601852" src="https://may-love.oss-cn-beijing.aliyuncs.com/2019-06-05_大数据打脸性别偏见/28_V1YbGVTFibKpPfRvYB2Aenic94VVbw.jpg" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSg9SpSccg7bDe1FTJ1xbTTtOzaoPV1YbGVTFibKpPfRvYB2Aenic94VVbw/640?wx_fmt=jpeg'" data-type="jpeg" data-w="1080" style="vertical-align: middle;box-sizing: border-box;"></section></section><section style="text-align: center;margin-top: 10px;margin-bottom: 10px;box-sizing: border-box;" powered-by="xiumi.us"><section style="max-width: 100%;vertical-align: middle;display: inline-block;line-height: 0;box-sizing: border-box;"><img class="raw-image" data-ratio="0.445" src="https://may-love.oss-cn-beijing.aliyuncs.com/2019-06-05_大数据打脸性别偏见/29_7o6qYEOFkiccy7t8e7V4GQDWia8Gsg.png" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_png/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSg5u2ySlDYLAF6iaYuxMOLBia3HnF27o6qYEOFkiccy7t8e7V4GQDWia8Gsg/640?wx_fmt=png'" data-type="png" data-w="800" style="vertical-align: middle;box-sizing: border-box;"></section></section><section style="text-align: center;margin-top: 10px;margin-bottom: 10px;box-sizing: border-box;" powered-by="xiumi.us"><section style="max-width: 100%;vertical-align: middle;display: inline-block;line-height: 0;box-sizing: border-box;"><img class="raw-image" data-ratio="1.7787037" src="https://may-love.oss-cn-beijing.aliyuncs.com/2019-06-05_大数据打脸性别偏见/30_zusBrPzo8HTgvLicBWCHfKxtrlEx0Q.jpg" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFa6KQJTrXsIQa1ulXrHicnSgbcdGdaIKQIpobymbAnjjx3AopzusBrPzo8HTgvLicBWCHfKxtrlEx0Q/640?wx_fmt=jpeg'" data-type="jpeg" data-w="1080" style="vertical-align: middle;box-sizing: border-box;"></section></section></section><section style="text-align: center;margin-top: 10px;margin-bottom: 10px;box-sizing: border-box;" powered-by="xiumi.us"><section style="max-width: 100%;vertical-align: middle;display: inline-block;line-height: 0;box-sizing: border-box;"></section><br  /></section></section>
+                </div>
+<div class="msgBox">
+	<div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_795.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">米虫四四桦<span>2019-06-05 22:54:32</span></p>
+		<p class="replyBody">看了第一个就不想看了。先不问这些数据的样本是怎么抽的，单单考虑到男女司机比例却没考虑男女司机上路时长，这就很不合理了。<span class="reply_like_num">赞 29</span></p><div class="msgBodyReply"><div class="msgBodyReplyList">
+						<p class="userName"><em class="replyIcon"></em>作者</p>
+						<p class="autherBody">下面小字有说哦，考虑了<span class="reply_like_num">赞 154<span></p></div></div>      </div></div><div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_1126.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">苏凉扣<span>2019-06-05 23:24:41</span></p>
+		<p class="replyBody">咳咳。学早教的说一下，性别偏见还存在于小孩子的身上，比如给男孩买车子超人或者蓝色黑色的衣服，从小就要进行打破性别偏见的教育哦<span class="reply_like_num">赞 83</span></p>
+		 </div></div><div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_27.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">边疆北国之春<span>2019-06-05 23:27:13</span></p>
+		<p class="replyBody">有一个问题是为什么由谁开创就证明这个性别在这个领域占优势呢，这有什么直接逻辑关系吗<span class="reply_like_num">赞 14</span></p><div class="msgBodyReply"><div class="msgBodyReplyList">
+						<p class="userName"><em class="replyIcon"></em>作者</p>
+						<p class="autherBody">??并不是说哪个性别占优势，而是不希望哪个性别成为劣势<span class="reply_like_num">赞 79<span></p></div></div>      </div></div><div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_1214.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">失心男Mok<span>2019-06-06 11:21:05</span></p>
+		<p class="replyBody">本人性别女，但多数社交媒体和各种网站登记信息都会填男，本文的数据来源方排除这个问题没。<span class="reply_like_num">赞 36</span></p>
+		 </div></div><div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_54.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">我怀片冰心断<span>2019-06-06 10:38:11</span></p>
+		<p class="replyBody">说一个很现实的，我是学工科的，hr明确说过，如果两个相差不大的简历摆在我面前，如果男生比女生不差太多，那肯定选男生<span class="reply_like_num">赞 29</span></p>
+		 </div></div><div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_1501.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">漠爱墓头<span>2019-06-05 23:28:32</span></p>
+		<p class="replyBody">排除了男女司机数量不同的影响，上面留言说的是上路时长，我觉得确实是不一样的。<span class="reply_like_num">赞 24</span></p>
+		 </div></div><div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_1456.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">资深禽兽战<span>2019-06-06 02:08:17</span></p>
+		<p class="replyBody">上路时长更长是导向技术更精湛、事故更少，还是导向由于时长、出事故的概率更高？我觉得确实可以据此去补充数据。但对男性上路时间会比女性司机上路时间更长的这种假定不也很可悲吗？同样是司机，女司机上路时间更短是为什么？这难道不就是为什么我们想打破性别偏见，想证明女性并不在某一领域具有天生劣势吗？<span class="reply_like_num">赞 21</span></p>
+		 </div></div><div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_203.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">你爸爸是我哦了<span>2019-06-05 23:34:53</span></p>
+		<p class="replyBody">我看到小字了啊，我说的是只考虑了司机数量的差别，却没考虑男女司机上路时长的差别。而且可能的影响因素还不止这些，比如男司机可能走长途更多而女司机走短途更多。要通过数据来证明男女司机哪个更容易出事故是不容易的。当然，由于媒体报道而导致的不合理偏见确实存在。反正不要有偏见就对了<span class="reply_like_num">赞 21</span></p>
+		 </div></div><div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_1179.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">假人假心耽<span>2019-06-05 23:17:31</span></p>
+		<p class="replyBody">打破性别刻板印象，从我做起<span class="reply_like_num">赞 19</span></p>
+		 </div></div><div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_329.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">ok乇夯侠罢玖玫<span>2019-06-13 11:35:54</span></p>
+		<p class="replyBody">回复热评1，本文是为了打脸性别偏见，不是为了争论女司机男司机到底谁开车更菜，那个数据可能会有点失偏颇，但是如果被媒体引导而坚定认为女人开车就是不如男人就是性别偏见，所以让我们不要被性别偏见牵着鼻子走～<span class="reply_like_num">赞 14</span></p>
+		 </div></div><div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_541.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">嗳妮甜<span>2019-06-05 23:00:55</span></p>
+		<p class="replyBody">我男性同胞是弱势群体。<span class="reply_like_num">赞 13</span></p>
+		 </div></div><div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_492.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">我爱史亚男篮<span>2019-06-06 09:53:49</span></p>
+		<p class="replyBody">即使父母意识到早教应该避免性别偏见，男孩就喜欢超人、小火车，女孩喜欢小玩偶，但是在社会、在学校中还是会被影响，希望每个人都可以打破性别偏见<span class="reply_like_num">赞 9</span></p>
+		 </div></div><div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_230.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">为彼此难过归<span>2019-06-05 23:08:03</span></p>
+		<p class="replyBody">喜欢这样的有理有据的文章<span class="reply_like_num">赞 8</span></p>
+		 </div></div><div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_236.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">张洲琳缩<span>2019-06-15 13:17:17</span></p>
+		<p class="replyBody">曾经看到过一句话，标签是给瓶子的不是给人的。个人认为，男女确实有所差异，最好的平权是不忽视差异，支持彼此的不同，但是不予对方设限。人不应有标签是因为我们复杂我们多元。<span class="reply_like_num">赞 6</span></p>
+		 </div></div><div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_816.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">缺席咬<span>2019-06-06 08:49:27</span></p>
+		<p class="replyBody">女生比男生更爱看小电影？？？黑人黑人脸问号<span class="reply_like_num">赞 6</span></p>
+		 </div></div><div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_1238.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">此乃良民婚<span>2019-06-05 22:54:18</span></p>
+		<p class="replyBody">我怀疑你开车，但我没有证据。[发呆][发呆]<span class="reply_like_num">赞 5</span></p>
+		 </div></div><div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_138.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">梦魇布<span>2019-06-06 06:51:56</span></p>
+		<p class="replyBody">重要技术岗男女比例一比一，这是不是对技术岗有什么误解…呆过互联网公司，开放全是男的，测试全是女的…难道不是因为女的不能熬夜发版等修bug也受不了长时间的脑力劳动么…但是，测试根本不算技术岗好不好<span class="reply_like_num">赞 4</span></p>
+		 </div></div><div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_382.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">新鬼来地球哀<span>2019-06-05 23:26:07</span></p>
+		<p class="replyBody">我以为数据来源是这个数据公司做的调查问卷，看来调查范围比想象中的要广泛一些<span class="reply_like_num">赞 4</span></p>
+		 </div></div><div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_1207.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">天枰骄纵轻吟<span>2019-06-06 01:30:33</span></p>
+		<p class="replyBody">写得很好，这些的确是我所没有了解过的，从what u need 那里知道你们，我也没有受到过什么性教育，全靠自己从各种渠道看到的良莠不齐的信息，好的性教育不仅让我们了解彼此身体的构造，更安全地去爱，也能推动性别平权，希望你们能一直走下去<span class="reply_like_num">赞 3</span></p>
+		 </div></div><div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_509.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">薇薇宝贝耶传奇<span>2019-06-06 05:50:08</span></p>
+		<p class="replyBody">最后的那个性别分区，跟性向差不多。每个人都有（社会上定义的）男性和女性特征，有些人多点这方面，有些人多点那方面的，要求某一个完全只有男性或者女性特征是偏见。两种特征都有的人过的更好<span class="reply_like_num">赞 2</span></p>
+		 </div></div><div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_664.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">妩姒女王3Llife<span>2019-06-05 23:07:34</span></p>
+		<p class="replyBody">三体中描述的那样？性别之间的界限越来越模糊<span class="reply_like_num">赞 2</span></p>
+		 </div></div>
+</div>
+
+</div>
+</body>
+</html>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%8E%93%E8%BE%A3MAYLOVE/" rel="tag"># 莓辣MAYLOVE</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/e41d2dc95ff6/" rel="prev" title="【初夜须知】儿童节末班车，坐到就是赚到">
+      <i class="fa fa-chevron-left"></i> 【初夜须知】儿童节末班车，坐到就是赚到
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/12a12a01ff0a/" rel="next" title="趁着618还没到，推一波性教育者们看的书莓辣书单">
+      趁着618还没到，推一波性教育者们看的书莓辣书单 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MayLove</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
