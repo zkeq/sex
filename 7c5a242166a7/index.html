@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"heart.maylove.pub","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"remove","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="点击查看原文进入">
+<meta property="og:type" content="article">
+<meta property="og:title" content="滴滴下线顺风车，我们就安全了吗？">
+<meta property="og:url" content="https://heart.maylove.pub/7c5a242166a7/index.html">
+<meta property="og:site_name" content="MayLove">
+<meta property="og:description" content="点击查看原文进入">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_gif/mQFsiaC55xFZT84lIzTeLo1fRjia0bIM3SOok1mCIQY3ynyMSQLF6HETWDrj4RrlovQFAK3n15Xj7gBECVRQhiaibg/640?wx_fmt=gif">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFZT84lIzTeLo1fRjia0bIM3S4fPLFKpuUlM5LFqoFlNH6xZdoWfOFP3DmSMAbe229iaBDBibSGRicCfOw/640?wx_fmt=jpeg">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFZT84lIzTeLo1fRjia0bIM3S0Gibia7llFsSPCWyEJW94pKzDb5LubmndgcibGdKxp0Sic0RSlkeYic4czA/640?wx_fmt=jpeg">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFZT84lIzTeLo1fRjia0bIM3SmoG3Nc7aR8ibP8iaMRnu67rqxTfmKvV9icUIMZkcUGdLoibMuRm3wWklfg/640?wx_fmt=jpeg">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFZT84lIzTeLo1fRjia0bIM3SrcXbpqKXlgm8bEC6HJxm0GX7ds1JDibqRMiaEWWgvHwUlmmy22NUUFbw/640?wx_fmt=jpeg">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFZT84lIzTeLo1fRjia0bIM3SUEbqUN7icicjRP6l6t3r6yZFfl9GiaZZZtiaZrMbnjUN281nLM82043P4w/640?wx_fmt=jpeg">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFZT84lIzTeLo1fRjia0bIM3S1ibfAgw4D9TNFgue6wic0NJXDsEknUH7kGd6fpDZYjwrAziaoFM7P1G2Q/640?wx_fmt=jpeg">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFZT84lIzTeLo1fRjia0bIM3SbRxHyg9SvZB4xNuAHibLOPP6epPqvvxrniccvMXbDvBC1hhfr5pYdialg/640?wx_fmt=jpeg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_206.jpg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_858.jpg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_963.jpg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_530.jpg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_1306.jpg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_728.jpg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_625.jpg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_507.jpg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_169.jpg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_14.jpg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_905.jpg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_1403.jpg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_1369.jpg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_292.jpg">
+<meta property="og:image" content="https://www.juyifx.cn/config/img/qlogo/aratar_1035.jpg">
+<meta property="article:published_time" content="2021-11-24T14:31:51.979Z">
+<meta property="article:modified_time" content="2021-07-26T12:17:24.778Z">
+<meta property="article:author" content="MayLove">
+<meta property="article:tag" content="莓辣MAYLOVE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mmbiz.qpic.cn/mmbiz_gif/mQFsiaC55xFZT84lIzTeLo1fRjia0bIM3SOok1mCIQY3ynyMSQLF6HETWDrj4RrlovQFAK3n15Xj7gBECVRQhiaibg/640?wx_fmt=gif">
+
+<link rel="canonical" href="https://heart.maylove.pub/7c5a242166a7/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>滴滴下线顺风车，我们就安全了吗？ | MayLove</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">MayLove</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个欢迎所有「妄想」改变中国性教育现状的酷小孩的地方</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-本站国内镜像">
+
+    <a href="https://zkeq.gitee.io/heart" rel="noopener" target="_blank"><i class="fa fa-sitemap fa-fw"></i>本站国内镜像</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://heart.maylove.pub/7c5a242166a7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MayLove">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MayLove">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          滴滴下线顺风车，我们就安全了吗？
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-11-24 22:31:51" itemprop="dateCreated datePublished" datetime="2021-11-24T22:31:51+08:00">2021-11-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-26 20:17:24" itemprop="dateModified" datetime="2021-07-26T20:17:24+08:00">2021-07-26</time>
+              </span>
+
+          
+            <div class="post-description">点击查看原文进入</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <html>
+<head>
+<title>maylove</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,viewport-fit=cover">
+<style>
+*{margin:0;padding:0;max-width:100%;box-sizing:border-box;}html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;line-height:1.6}img{z-index:999;position:relative;max-width:100%;margin:10px 0;}body{-webkit-touch-callout:none;font family:-apple-system-font,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei UI","Microsoft YaHei",Arial,sans-serif;color:#333;letter-spacing:.034em}h1,h2,h3,h4,h5,h6{font-weight:400;font-size:16px;line-height:36px;}a{color:#576b95;text-decoration:none;-webkit-tap-highlight-color:rgba(0,0,0,0)}td,th{word-wrap:break-word;padding:5px 10px;border:1px solid #DDD;}table{margin-bottom:10px;border-collapse:collapse;display:table;width:100%!important;}.appmsg_skin_default .rich_media_area_primary{background-color:#fff}.appmsg_skin_default .rich_media_area_primary .weui-loadmore_line .weui-loadmore__tips{background-color:#fff}.rich_media_area_primary{padding:20px 16px 12px;background-color:#fafafa}@media (max-width:375px){.rich_media_area_primary{padding:20px 60px 15px 60px}.rich_media_area_extra{padding:0 60px 21px 60px}}@media (min-width:1024px){.rich_media_area_primary_inner,.rich_media_area_extra_inner,body{max-width:677px;margin-left:auto;margin-right:auto}.rich_media_area_primary{padding-top:32px}}.rich_media{padding:20px;}.appmsg_skin_default .rich_media_area_primary{background-color:#fff}.appmsg_skin_default .rich_media_area_primary .weui-loadmore_line .weui-loadmore__tips{background-color:#fff}@media screen and (min-width:1024px){.rich_media_area_primary_inner,.rich_media_area_extra_inner{max-width:677px;margin-left:auto;margin-right:auto}.rich_media_area_primary{padding-top:32px}}.rich_media_content{overflow:hidden;color:#333;font-size:17px;line-height:37px;;word-wrap:break-word;-webkit-hyphens:auto;-ms-hyphens:auto;hyphens:auto;text-align:justify;position:relative;z-index:0}.rich_media_content *{max-width:100%!important;box-sizing:border-box!important;-webkit-box-sizing:border-box!important;word-wrap:break-word!important}.rich_media_content p{clear:both;min-height:1em}.rich_media_content em{font-style:italic}.rich_media_content fieldset{min-width:0}.rich_media_content .list-paddingleft-1,.rich_media_content .list-paddingleft-2,.rich_media_content .list-paddingleft-3{padding-left:2.2em}.rich_media_content .list-paddingleft-1 .list-paddingleft-2,.rich_media_content .list-paddingleft-2 .list-paddingleft-2,.rich_media_content .list-paddingleft-3 .list-paddingleft-2{padding-left:30px}.rich_media_content .list-paddingleft-1{padding-left:1.2em}.rich_media_content .list-paddingleft-3{padding-left:3.2em}.rich_media_content .code-snippet,.rich_media_content .code-snippet__fix{max-width:1000%!important}.rich_media_content .code-snippet *,.rich_media_content .code-snippet__fix *{max-width:1000%!important}.rich_media_title{font-size:22px;line-height:42px;;line-height:1.4;margin:10px 0;padding-bottom:10px;border-bottom:1px solid #e7e7eb;}@supports(-webkit-overflow-scrolling:touch){.rich_media_title{font-weight:700}}.rich_media_meta{display:inline-block;vertical-align:middle;margin:0 10px 10px 0;font-size:15px;line-height:35px;;line-height:35px;;line-height:35px;;line-height:35px;;-webkit-tap-highlight-color:rgba(0,0,0,0)}.rich_media_meta.icon_appmsg_tag{margin-right:4px}.rich_media_meta.meta_tag_text{margin-right:0}.rich_media_meta_list em{font-style:normal}.rich_media_meta_text{color:rgba(0,0,0,0.3)}p{margin:0;}.msgBox{margin-top:20px;padding-top:20px;padding-left:50px;overflow:hidden;border-top:2px dashed #09a2ff;}.msg{padding-top:7px;clear:both;}.msgBody{float:right;width:100%;margin-left:55px;padding-bottom:15px;border-bottom:1px dashed #e0e0e0;}.userHeadImg{float:left;margin-left:-50px;}.userHeadImg img{width:40px;height:40px;margin-right:10px;border-radius:3px;}.userName{color:#888888;line-height:24px;font-size:14px;line-height:34px;;line-height:34px;;line-height:34px;;line-height:34px;;line-height:34px;;line-height:34px;;line-height:34px;;line-height:34px;;line-height:34px;;line-height:34px;;line-height:34px;;margin:5px 0 5px 0;height:24px;}.replyBody,.autherBody{color:#565656;font-size:15px;}.replyIcon{border-left:4px solid #33ab01;margin-right:5px;}.ad{text-decoration:none;color:#d6d4d4;font-size:12px;line-height:32px;;}.msgBodyReply{padding-top:5px;}.userName span{float:right;color:#afafaf;font-size:14px;}code{text-align:left;font-size:14px;display:block;white-space:pre;display:-webkit-box;display:-webkit-flex;display:flex;position:relative;}.code-snippet__fix{font-size:14px;margin:10px 0;display:block;color:#333;position:relative;background-color:rgba(0,0,0,0.03);border:1px solid #f0f0f0;border-radius:2px;display:-webkit-box;display:-webkit-flex;display:flex;padding-left:25px;line-height:26px}.code-snippet__fix code{text-align:left;font-size:14px;display:block;white-space:pre;display:-webkit-box;display:-webkit-flex;display:flex;position:relative;font family:Consolas,"Liberation Mono",Menlo,Courier,monospace}.code-snippet__comment,.code-snippet__quote{color:#afafaf;font-style:italic}.code-snippet__keyword,.code-snippet__selector-tag,.code-snippet__subst{color:#ca7d37}.code-snippet__number,.code-snippet__literal,.code-snippet__variable,.code-snippet__template-variable,.code-snippet__tag .code-snippet__attr{color:#0e9ce5}.code-snippet__string,.code-snippet__doctag{color:#d14}.code-snippet__title,.code-snippet__section,.code-snippet__selector-id{color:#d14}.code-snippet__subst{font-weight:normal}.code-snippet__type,.code-snippet__class .code-snippet__title{color:#0e9ce5}.code-snippet__tag,.code-snippet__name,.code-snippet__attribute{color:#0e9ce5;font-weight:normal}.code-snippet__regexp,.code-snippet__link{color:#ca7d37}.code-snippet__symbol,.code-snippet__bullet{color:#d14}.code-snippet__built_in,.code-snippet__builtin-name{color:#ca7d37}.code-snippet__meta{color:#afafaf}.code-snippet__deletion{background:#fdd}.code-snippet__addition{background:#dfd}.code-snippet__emphasis{font-style:italic}.code-snippet__strong{font-weight:bold}.account_avatar{width:40px;height:40px;padding:0;}.account_info{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;-webkit-align-items:center;padding:20px 0;align-items:center}.flex_bd{padding-left:14px;}.account_nickname{display:inline-block;vertical-align:middle;line-height:1.2;color:#576b95;font-size:14px}.account_desc{overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1;color:rgba(0,0,0,0.3);font-size:14px;line-height:1.2;padding-top:.4em}.msg_source_url{text-align:left;word-break:break-all;margin-top:20px;}.msg_source_url a{padding-right:10px;}.msg_source_url .url_text{color:#a8a8a8;}.video-desc{font-size:14px;margin-top:15px;color:#6c6c6c;}.msg_source_url{text-align:left;}.original_primary_card_tips{color:rgba(0,0,0,0.3);line-height:1.4;font-size:15px;}.weui-flex__item{margin-bottom:20px;padding:20px 16px;margin-top:16px;line-height:1.4;align-items:center;background-color:#f7f7f7;border-radius:8px;position:relative;}.original_primary_desc{color:rgba(0,0,0,0.5);font-size:14px;padding-top:4px;width:auto;overflow:hidden;text-overflow:ellipsis;}.msgBodyReplyList{border-top:1px solid #e1e1e1;margin-top:10px;}.msgBodyReplyListTop{border-top:0;}.reply_like_num{float:right;font-size:14px;color:#c7c7c7;}.msgData{margin-top:20px;color:#626262;}.msgData span{font-size:14px;padding-right:15px;}.msgData .likes{float:right;padding-right:0;}.js_text_content p{font-size:18px;line-height:38px;;}.rich_media_meta_link{font-size:15px;}blockquote {padding-left: 10px;border-left: 3px solid #dbdbdb;color: rgba(0,0,0,0.5);font-size:15px;line-height:35px;;padding-top: 4px;margin: 1em 0;}.video_iframe{width:500px;height:400px;}.blockquote_info{color:#b5b5b5;margin-top:10px;}.playVideoWx{position:relative;display:block;}.icon_mid_play{position:absolute;z-index:9999;top:50%;left:50%;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;width:48px;height:48px;background:rgba(237,237,237,0.9);border-radius:50%}.icon_mid_play:before{content:"";text-indent:-999em;display:inline-block;width:28px;height:28px;vertical-align:middle;background-size:cover;background-image:url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E  %3Cpath fill='%23151515' fill-rule='evenodd' d='M9.524 4.938l10.092 6.21a1 1 0 0 1 0 1.704l-10.092 6.21A1 1 0 0 1 8 18.21V5.79a1 1 0 0 1 1.524-.852z'/%3E%3C/svg%3E")}
+</style>
+<link href="https://www.juyifx.cn/config/css/wxArticle.css" rel="stylesheet"/>
+</head>
+<body>
+                
+                <h2 class="rich_media_title" id="activity-name"><a href="http://mp.weixin.qq.com/s?__biz=MjM5NzkxNTI2Ng==&mid=2247489936&idx=1&sn=c7e064d62637fdd1803e6666bc968fa5&chksm=a6d3e67d91a46f6b4e1ab91defd988d2c11f90606ea2c8205cd04448d65ee4468f14e662c3b9#rd" title="点击文章标题可访问原文章链接" target="_blank">
+                    
+                    
+                    
+滴滴下线顺风车，我们就安全了吗？
+                </a></h2>
+                <div id="meta_content" class="rich_media_meta_list">
+                                                                <span id="copyright_logo" class="rich_media_meta icon_appmsg_tag appmsg_title_tag">原创</span>
+                                                                                            <span class="rich_media_meta rich_media_meta_text">
+                                                                    莓辣MAYLOVE
+                                                            </span>
+                                                                
+                                        <span class="rich_media_meta rich_media_meta_nickname" id="profileBt">
+                      <a href="javascript:void(0);" id="js_name">
+                        莓辣MAYLOVE                      </a>
+                      <div id="js_profile_qrcode" class="profile_container" style="display:none;">
+                          <div class="profile_inner">
+                              <strong class="profile_nickname">莓辣MAYLOVE</strong>
+                              
+
+                              <p class="profile_meta">
+                              <label class="profile_meta_label">微信号</label>
+                              <span class="profile_meta_value">meila2333</span>
+                              </p>
+
+                              <p class="profile_meta">
+                              <label class="profile_meta_label">功能介绍</label>
+                              <span class="profile_meta_value">一个欢迎所有「妄想」改变中国性教育现状的酷小孩的地方</span>
+                              </p>
+                              
+                          </div>
+                          <span class="profile_arrow_wrp" id="js_profile_arrow_wrp">
+                              <i class="profile_arrow arrow_out"></i>
+                              <i class="profile_arrow arrow_in"></i>
+                          </span>
+                      </div>
+                    </span>
+                    <em id="publish_time" class="rich_media_meta rich_media_meta_text">2018-08-26</em>
+                </div>
+
+                
+                                                                                                                                <div id="js_tags" class="article-tag__list single-tag__wrp js_single" data-len="1">
+                                            
+                                                                                    <div class="article-tag-card__left">
+                                    <div class="article-tag-card__title">收录于话题</div>
+                                    <div class="article-tag__item-wrp no-active js_tag" data-url="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MjM5NzkxNTI2Ng==&amp;action=getalbum&amp;album_id=1398341022098505728#wechat_redirect" data-tag_id="" data-album_id="1398341022098505728">
+                                        <span class="article-tag__item">#性侵推文合集</span>
+                                    </div>
+                                </div>
+                                <div class="article-tag-card__right">18个</div>
+                                                                                        </div><div id="weixin_content"><section style="font-size:15px;line-height:35px;;padding-right: 14px;padding-left: 14px;box-sizing: border-box;"><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="text-align: center;margin-top: 10px;margin-bottom: 10px;box-sizing: border-box;"><section style="max-width: 100%;vertical-align: middle;display: inline-block;box-sizing: border-box;"><img data-ratio="0.3328125" src="https://may-love.oss-cn-beijing.aliyuncs.com/2018-08-26_滴滴下线顺风车，我们就安全了吗？/1_4RrlovQFAK3n15Xj7gBECVRQhiaibg.gif" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_gif/mQFsiaC55xFZT84lIzTeLo1fRjia0bIM3SOok1mCIQY3ynyMSQLF6HETWDrj4RrlovQFAK3n15Xj7gBECVRQhiaibg/640?wx_fmt=gif'" data-type="gif" data-w="640" style="vertical-align: middle;box-sizing: border-box;"></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="box-sizing: border-box;"><section style="box-sizing: border-box;"><p style="text-align: justify;white-space: normal;box-sizing: border-box;">8月24日，乘坐顺风车的乐清赵姓女孩遇害。到了今天，滴滴做出的官方回答如下：</p><p style="box-sizing: border-box;"><br style="box-sizing: border-box;"></p></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="text-align: center;margin-top: 10px;margin-bottom: 10px;box-sizing: border-box;"><section style="max-width: 100%;vertical-align: middle;display: inline-block;box-sizing: border-box;"><img data-ratio="0.9148148" src="https://may-love.oss-cn-beijing.aliyuncs.com/2018-08-26_滴滴下线顺风车，我们就安全了吗？/2_OFP3DmSMAbe229iaBDBibSGRicCfOw.jpg" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFZT84lIzTeLo1fRjia0bIM3S4fPLFKpuUlM5LFqoFlNH6xZdoWfOFP3DmSMAbe229iaBDBibSGRicCfOw/640?wx_fmt=jpeg'" data-type="jpeg" data-w="1080" style="vertical-align: middle;box-sizing: border-box;"></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="box-sizing: border-box;"><section style="box-sizing: border-box;"><p style="box-sizing: border-box;"><br style="box-sizing: border-box;"></p></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="box-sizing: border-box;"><section style="box-sizing: border-box;"><p style="text-align: justify;white-space: normal;box-sizing: border-box;">5月6日的空姐事件还历历在目，<span style="letter-spacing: 0px;box-sizing: border-box;">铺天盖地的安全指南还没完全背诵下来，防人之心不可无的口号还响在耳边。</span></p><p style="text-align: justify;white-space: normal;box-sizing: border-box;"><span style="letter-spacing: 0px;box-sizing: border-box;"><br style="box-sizing: border-box;"></span></p><p style="text-align: justify;white-space: normal;box-sizing: border-box;"><span style="letter-spacing: 0px;box-sizing: border-box;">建议女孩子手机打车时开启定位，不要半途取消订单，与朋友保持联系，存储紧急联系人等等等等。</span></p><p style="text-align: justify;white-space: normal;box-sizing: border-box;"><span style="letter-spacing: 0px;box-sizing: border-box;"><br style="box-sizing: border-box;"></span></p><p style="text-align: justify;white-space: normal;box-sizing: border-box;"><span style="letter-spacing: 0px;box-sizing: border-box;">——这些措施，从上一次出事开始，就已经在所有人的群聊和朋友圈疯转了。好像上上次，上上上次，也是。</span></p></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="box-sizing: border-box;"><section style="box-sizing: border-box;"><p style="box-sizing: border-box;"><br style="box-sizing: border-box;"></p></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="text-align: center;margin-top: 10px;margin-bottom: 10px;box-sizing: border-box;"><section style="max-width: 100%;vertical-align: middle;display: inline-block;box-sizing: border-box;"><img data-ratio="0.6515625" src="https://may-love.oss-cn-beijing.aliyuncs.com/2018-08-26_滴滴下线顺风车，我们就安全了吗？/3_bmndgcibGdKxp0Sic0RSlkeYic4czA.jpg" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFZT84lIzTeLo1fRjia0bIM3S0Gibia7llFsSPCWyEJW94pKzDb5LubmndgcibGdKxp0Sic0RSlkeYic4czA/640?wx_fmt=jpeg'" data-type="jpeg" data-w="640" style="vertical-align: middle;box-sizing: border-box;"></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="box-sizing: border-box;"><section style="box-sizing: border-box;"><p style="box-sizing: border-box;"><br style="box-sizing: border-box;"></p></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="text-align: center;margin-top: 10px;margin-bottom: 10px;box-sizing: border-box;"><section style="max-width: 100%;vertical-align: middle;display: inline-block;box-sizing: border-box;"><img data-ratio="0.922" src="https://may-love.oss-cn-beijing.aliyuncs.com/2018-08-26_滴滴下线顺风车，我们就安全了吗？/4_KvV9icUIMZkcUGdLoibMuRm3wWklfg.jpg" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFZT84lIzTeLo1fRjia0bIM3SmoG3Nc7aR8ibP8iaMRnu67rqxTfmKvV9icUIMZkcUGdLoibMuRm3wWklfg/640?wx_fmt=jpeg'" data-type="jpeg" data-w="500" style="vertical-align: middle;box-sizing: border-box;"></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="box-sizing: border-box;"><section style="box-sizing: border-box;"><p style="box-sizing: border-box;"><br style="box-sizing: border-box;"></p></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="margin-top: 10px;margin-bottom: 10px;box-sizing: border-box;"><section style="display: inline-block;vertical-align: top;padding-right: 10px;padding-left: 10px;background-color: rgb(122, 91, 137);box-sizing: border-box;"><section style="display: inline-block;vertical-align: middle;box-sizing: border-box;"><section style="display: inline-block;vertical-align: middle;color: rgb(255, 255, 255);padding-right: 2px;font-size:17px;line-height:37px;;box-sizing: border-box;"><p style="box-sizing: border-box;"><strong style="box-sizing: border-box;">这些措施，有用吗？</strong></p></section></section><section style="display: inline-block;vertical-align: middle;width: 0.8em;height: 0.8em;border-top: 0.2em solid rgb(255, 255, 255);border-right: 0.2em solid rgb(255, 255, 255);transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);-o-transform: rotate(45deg);box-sizing: border-box;"></section></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="box-sizing: border-box;"><section style="box-sizing: border-box;"><p style="box-sizing: border-box;"><br style="box-sizing: border-box;"></p></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="box-sizing: border-box;"><section style="text-align: justify;box-sizing: border-box;"><p style="white-space: normal;box-sizing: border-box;"><span style="letter-spacing: 0px;box-sizing: border-box;">滴滴事件中的赵姓女孩，其在<strong style="box-sizing: border-box;"><span style="letter-spacing: 0px;color: rgb(191, 94, 151);box-sizing: border-box;">大白天下午</span></strong>的乘车过程中在<span style="letter-spacing: 0px;color: rgb(191, 94, 151);box-sizing: border-box;"><strong style="box-sizing: border-box;">给好友</strong></span>的微信中提到</span><span style="letter-spacing: 0px;color: rgb(191, 94, 151);box-sizing: border-box;"><strong style="box-sizing: border-box;">“司机开的山路没有一辆车，有点怕”</strong></span><span style="letter-spacing: 0px;box-sizing: border-box;">，五分钟后在给另一好友的微信中提到</span><span style="letter-spacing: 0px;color: rgb(191, 94, 151);box-sizing: border-box;"><strong style="box-sizing: border-box;">“救命、抢救”</strong></span><span style="letter-spacing: 0px;box-sizing: border-box;">，随后失联，电话处于关机状态。</span></p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"></p><p style="white-space: normal;box-sizing: border-box;">次日，警方发布公告称女孩遗体已被寻获，犯罪嫌疑人为顺风车司机。</p></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="box-sizing: border-box;"><section style="box-sizing: border-box;"><p style="box-sizing: border-box;"><br style="box-sizing: border-box;"></p></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="box-sizing: border-box;"><section style="text-align: center;box-sizing: border-box;"><p style="box-sizing: border-box;"><strong style="box-sizing: border-box;">她什么都做了</strong></p><p style="box-sizing: border-box;"><strong style="box-sizing: border-box;">但她仍然没能够逃生</strong></p><p style="box-sizing: border-box;"><strong style="box-sizing: border-box;">她还能怎么办</strong></p></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="box-sizing: border-box;"><section style="box-sizing: border-box;"><p style="box-sizing: border-box;"><br style="box-sizing: border-box;"></p></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="box-sizing: border-box;"><section style="text-align: justify;box-sizing: border-box;"><p style="white-space: normal;box-sizing: border-box;">然后我们开始问责滴滴，追问其监管机制的漏洞。明明作案的车主在<span style="letter-spacing: 0px;box-sizing: border-box;">该事件中发生前几天，就被另一位乘客投诉有不当行为，投诉却并没有得到重视和作出举措；当遇害女孩的好友狂敲滴滴客服，争分夺秒生死攸关之时，滴滴因无法核查来电人真实身份而拒绝公开车主信息；车主在案发前临时伪造车牌从而躲过了滴滴的背景审查。</span></p><p style="white-space: normal;box-sizing: border-box;"><span style="letter-spacing: 0px;box-sizing: border-box;"><br style="box-sizing: border-box;"></span></p><p style="white-space: normal;box-sizing: border-box;"><span style="letter-spacing: 0px;box-sizing: border-box;">种种细节都将矛头径直指向滴滴出行（北京小桔科技有限公司），我们迫切地想要一个解决方案，然后我们得到了开头的截图。</span></p><p style="white-space: normal;box-sizing: border-box;"><span style="letter-spacing: 0px;box-sizing: border-box;"><br style="box-sizing: border-box;"></span></p><p style="white-space: normal;box-sizing: border-box;"><span style="letter-spacing: 0px;box-sizing: border-box;">顺风车关停了。</span></p></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="box-sizing: border-box;"><section style="box-sizing: border-box;"><p style="box-sizing: border-box;"><br style="box-sizing: border-box;"></p></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="margin-top: 10px;margin-bottom: 10px;box-sizing: border-box;"><section style="display: inline-block;vertical-align: top;padding-right: 10px;padding-left: 10px;background-color: rgb(122, 91, 137);box-sizing: border-box;"><section style="display: inline-block;vertical-align: middle;box-sizing: border-box;"><section style="display: inline-block;vertical-align: middle;color: rgb(255, 255, 255);padding-right: 2px;font-size:17px;line-height:37px;;box-sizing: border-box;"><p style="box-sizing: border-box;"><strong style="box-sizing: border-box;">远离顺风车，我安全了吗？</strong></p></section></section><section style="display: inline-block;vertical-align: middle;width: 0.8em;height: 0.8em;border-top: 0.2em solid rgb(255, 255, 255);border-right: 0.2em solid rgb(255, 255, 255);transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);-o-transform: rotate(45deg);box-sizing: border-box;"></section></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="box-sizing: border-box;"><section style="box-sizing: border-box;"><p style="box-sizing: border-box;"><br style="box-sizing: border-box;"></p></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="box-sizing: border-box;"><section style="box-sizing: border-box;"><p style="box-sizing: border-box;">请允许我们再追问一句——</p><p style="box-sizing: border-box;"><span style="letter-spacing: 0px;box-sizing: border-box;">如果心生歹意的不是坐在你前方的快车司机：</span></p><p style="box-sizing: border-box;">如果他是和你朝夕相伴的同事？</p><p style="box-sizing: border-box;">是你充分信任的恋人？</p><p style="box-sizing: border-box;">是与你擦肩而过的某一个男性？</p><p style="box-sizing: border-box;"><br style="box-sizing: border-box;"></p><p style="box-sizing: border-box;">很抱歉，但该类事件中的性别比极端失衡现象，让我们不得不把性别因素单拎出来——<span style="color: rgb(191, 94, 151);box-sizing: border-box;"><strong style="box-sizing: border-box;">为什么绝大部分是女性受害者、男性施害者？</strong></span></p></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="box-sizing: border-box;"><section style="box-sizing: border-box;"><p style="box-sizing: border-box;"><br style="box-sizing: border-box;"></p></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="box-sizing: border-box;"><section style="box-sizing: border-box;"><p style="box-sizing: border-box;">某滴滴交流群的截图是这样的画风：<br style="box-sizing: border-box;"></p></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="box-sizing: border-box;"><section style="box-sizing: border-box;"><p style="box-sizing: border-box;"><br style="box-sizing: border-box;"></p></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="margin: 10px 0% 5px;box-sizing: border-box;"><section style="text-align: center;font-size:11px;line-height:31px;;color: rgb(62, 62, 62);box-sizing: border-box;"><p style="box-sizing: border-box;">左右滑动查看下一张https://may-love.oss-cn-beijing.aliyuncs.com</p></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="font-size:11px;line-height:31px;;box-sizing: border-box;"><section style="display: inline-block;width: 100%;vertical-align: top;overflow-x: auto;box-sizing: border-box;-webkit-overflow-scrolling: touch;"><section style="overflow-y: hidden;width: 300%;min-width: 100%;max-width: 300% !important;box-sizing: border-box;"><section class="V5" style="display: inline-block;width: 33.3333%;vertical-align: top;box-sizing: border-box;" powered-by="xiumi.us"><section style="text-align: center;margin-right: 0%;margin-left: 0%;box-sizing: border-box;"><section style="max-width: 100%;vertical-align: middle;display: inline-block;width: 70%;box-sizing: border-box;"><img data-ratio="2.1659091" src="https://may-love.oss-cn-beijing.aliyuncs.com/2018-08-26_滴滴下线顺风车，我们就安全了吗？/5_1JDibqRMiaEWWgvHwUlmmy22NUUFbw.jpg" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFZT84lIzTeLo1fRjia0bIM3SrcXbpqKXlgm8bEC6HJxm0GX7ds1JDibqRMiaEWWgvHwUlmmy22NUUFbw/640?wx_fmt=jpeg'" data-type="jpeg" data-w="440" style="vertical-align: middle;width: 100%;box-sizing: border-box;"></section></section></section><section class="V5" style="display: inline-block;width: 33.3333%;vertical-align: top;box-sizing: border-box;" powered-by="xiumi.us"><section style="text-align: center;margin-right: 0%;margin-left: 0%;box-sizing: border-box;"><section style="max-width: 100%;vertical-align: middle;display: inline-block;width: 70%;box-sizing: border-box;"><img data-ratio="2.1659091" src="https://may-love.oss-cn-beijing.aliyuncs.com/2018-08-26_滴滴下线顺风车，我们就安全了吗？/6_iaZZZtiaZrMbnjUN281nLM82043P4w.jpg" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFZT84lIzTeLo1fRjia0bIM3SUEbqUN7icicjRP6l6t3r6yZFfl9GiaZZZtiaZrMbnjUN281nLM82043P4w/640?wx_fmt=jpeg'" data-type="jpeg" data-w="440" style="vertical-align: middle;width: 100%;box-sizing: border-box;"></section></section></section><section class="V5" style="display: inline-block;width: 33.3333%;vertical-align: top;box-sizing: border-box;" powered-by="xiumi.us"><section style="text-align: center;margin-right: 0%;margin-left: 0%;box-sizing: border-box;"><section style="max-width: 100%;vertical-align: middle;display: inline-block;width: 70%;box-sizing: border-box;"><img data-ratio="2.1659091" src="https://may-love.oss-cn-beijing.aliyuncs.com/2018-08-26_滴滴下线顺风车，我们就安全了吗？/7_knUH7kGd6fpDZYjwrAziaoFM7P1G2Q.jpg" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFZT84lIzTeLo1fRjia0bIM3S1ibfAgw4D9TNFgue6wic0NJXDsEknUH7kGd6fpDZYjwrAziaoFM7P1G2Q/640?wx_fmt=jpeg'" data-type="jpeg" data-w="440" style="vertical-align: middle;width: 100%;box-sizing: border-box;"></section></section></section></section></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="box-sizing: border-box;"><section style="box-sizing: border-box;"><p style="box-sizing: border-box;"><br style="box-sizing: border-box;"></p></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="box-sizing: border-box;"><section style="text-align: justify;box-sizing: border-box;"><p style="white-space: normal;box-sizing: border-box;"><span style="letter-spacing: 0px;box-sizing: border-box;">这些恶意，可能发生在任何一个职业的男性对女性身上。</span><br style="box-sizing: border-box;"></p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"></p><p style="white-space: normal;box-sizing: border-box;">一个顺风车关停了，还可能有千千万万个领域，发生着同样的事情。</p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"></p><p style="white-space: normal;box-sizing: border-box;">所以尽管我们花了好大力气教女孩如何从一只漆黑的车厢逃生的本领，但她生命中可能遇到的危险，绝对不仅仅发生在这间车厢内。</p></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="box-sizing: border-box;"><section style="box-sizing: border-box;"><p style="box-sizing: border-box;"><br style="box-sizing: border-box;"></p></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="box-sizing: border-box;"><section style="text-align: justify;color: rgb(191, 94, 151);box-sizing: border-box;"><p style="white-space: normal;box-sizing: border-box;"><strong style="box-sizing: border-box;">男性以自己为中心、以女性为附属建构而成的性别关系，比任何一个人想象的都要稳固的多，也更为广泛地体现着。</strong></p></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="box-sizing: border-box;"><section style="box-sizing: border-box;"><p style="box-sizing: border-box;"><br style="box-sizing: border-box;"></p></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="box-sizing: border-box;"><section style="text-align: justify;box-sizing: border-box;"><p style="white-space: normal;box-sizing: border-box;">否则这个男性，他不会说着“强奸光荣”，不惜利用暴力手段和实施犯罪来占据性关系中的上风，<span style="letter-spacing: 0px;box-sizing: border-box;">夺取</span><span style="letter-spacing: 0px;box-sizing: border-box;">主导权。</span></p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"></p><p style="white-space: normal;box-sizing: border-box;">否则这个男性，他不会认为女性穿得少被性骚扰是活该，他分得清什么是性诱惑性暗示，什么是基于自己选择的展现。</p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"></p><p style="white-space: normal;box-sizing: border-box;">否则这个男性，他不会在面对一个女性时，就产生了性的控制和支配欲。尤其当这种欲望能够在一个封闭的空间内不断膨胀和发酵，最终酿成恶果。</p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"></p><p style="white-space: normal;box-sizing: border-box;">——这个空间，小至密闭的车厢，大至整个社会环境。</p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"></p><p style="white-space: normal;box-sizing: border-box;"><span style="color: rgb(191, 94, 151);box-sizing: border-box;"><strong style="box-sizing: border-box;">否则这个男性，女性在他眼里，他看到的将是一个完整的人。</strong></span><span style="letter-spacing: 0px;box-sizing: border-box;">而并非割裂开来的：姣好的脸庞、精致的妆容、窈窕的身躯、诱人的生殖器。</span></p></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="box-sizing: border-box;"><section style="box-sizing: border-box;"><p style="box-sizing: border-box;"><br style="box-sizing: border-box;"></p></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="box-sizing: border-box;"><section style="text-align: center;color: rgb(198, 198, 198);box-sizing: border-box;"><p style="box-sizing: border-box;">▲</p></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="box-sizing: border-box;"><section style="box-sizing: border-box;"><p style="box-sizing: border-box;"><br style="box-sizing: border-box;"></p></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="box-sizing: border-box;"><section style="text-align: justify;box-sizing: border-box;"><p style="white-space: normal;box-sizing: border-box;">我们希望的是，彻底粉碎“男人都是潜在强奸犯”“强奸女性是因为她的性魅力”这类毒瘤般的观念。性侵犯施害者永远不只有男性，受害者也永远不只有女性。</p><p style="white-space: normal;box-sizing: border-box;"><br style="box-sizing: border-box;"></p><p style="white-space: normal;box-sizing: border-box;">当冲动和本能不再作为性侵犯的借口，当女性在男性的眼中由一个器官还原为一个人，当两性建立起更为平等的关系——双方受到的伤害都将更小一点儿。</p><p style="white-space: normal;box-sizing: border-box;text-align: center;"><br></p><p style="white-space: normal;box-sizing: border-box;text-align: center;">点击蓝字查看关于性侵犯更多莓辣文章：</p><p style="white-space: normal;box-sizing: border-box;text-align: center;"><a href="http://mp.weixin.qq.com/s?__biz=MzIwOTYyMzUyNg==&amp;mid=2247485524&amp;idx=1&amp;sn=8401053597e568de8115ec529936dc75&amp;chksm=977048dda007c1cb319567d09ede087d8f904ee6674d4ffa8c4ec0808205b425690a0ebe653e&amp;scene=21#wechat_redirect" target="_blank" style="text-decoration: underline;font-size:12px;line-height:32px;;"><span style="font-size:12px;line-height:32px;;">每五个漂流瓶里，就有一根大屌 || 关于性侵犯，你不知道的8个事实</span></a><br></p><p style="white-space: normal;box-sizing: border-box;text-align: center;"><a href="http://mp.weixin.qq.com/s?__biz=MzIwOTYyMzUyNg==&amp;mid=2247485630&amp;idx=1&amp;sn=3813b854714c57893cb2188cf93282b9&amp;chksm=97704837a007c121459d919e91e0ba14a733da0e4c3c0018f26a1d03ced27cb44e8a85ac96a8&amp;scene=21#wechat_redirect" target="_blank" style="text-decoration: underline;font-size:12px;line-height:32px;;"><span style="font-size:12px;line-height:32px;;">下课后，老师主动给我补课谈恋爱。|| 权力结构</span></a></p><p style="white-space: normal;box-sizing: border-box;text-align: center;"><a href="http://mp.weixin.qq.com/s?__biz=MzIwOTYyMzUyNg==&amp;mid=2247485643&amp;idx=1&amp;sn=3db1d50c407ccacaf222a5a5844051f3&amp;chksm=97704842a007c1545c4b4cfc51093d8eeba34c0d1d1f7ceb832282ddd449aae8571f813274a7&amp;scene=21#wechat_redirect" target="_blank" style="text-decoration: underline;font-size:12px;line-height:32px;;"><span style="font-size:12px;line-height:32px;;">性侵犯80%以上为熟人作案</span></a><br></p><p style="white-space: normal;box-sizing: border-box;text-align: center;"><a href="http://mp.weixin.qq.com/s?__biz=MzIwOTYyMzUyNg==&amp;mid=2247485659&amp;idx=1&amp;sn=756caadad6bf2ce72a7d4ae27a528ce3&amp;chksm=97704852a007c144f318b2a5f99f51553eb57d6da729d240eccef3bbfbd772fde507e11a4c2d&amp;scene=21#wechat_redirect" target="_blank" style="text-decoration: underline;font-size:12px;line-height:32px;;"><span style="font-size:12px;line-height:32px;;">“请问怎么能被小姐姐性侵？”当男生被性侵，他会遇到什么</span></a><br></p><p style="white-space: normal;box-sizing: border-box;text-align: center;"><a href="http://mp.weixin.qq.com/s?__biz=MzIwOTYyMzUyNg==&amp;mid=2247485720&amp;idx=1&amp;sn=6c1deca77722e18052202658719e163f&amp;chksm=97704991a007c08749b10b31101ff8ec222771e66a240be4a12af87ed11a4fe22006cd7904b8&amp;scene=21#wechat_redirect" target="_blank" style="text-decoration: underline;font-size:12px;line-height:32px;;"><span style="font-size:12px;line-height:32px;;">我被性侵犯，朋友却说别在意 || 如何正确安慰性侵幸存者</span></a></p><p style="white-space: normal;box-sizing: border-box;text-align: center;"><a href="http://mp.weixin.qq.com/s?__biz=MzIwOTYyMzUyNg==&amp;mid=2247485748&amp;idx=1&amp;sn=b58320566f1ac4c0f42742e2f43a1f13&amp;chksm=977049bda007c0abefb5595497ae1fe6a9185411367c53daeca3cb5c90c8adf753f9ac3aa641&amp;scene=21#wechat_redirect" target="_blank" style="text-decoration: underline;font-size:12px;line-height:32px;;"><span style="font-size:12px;line-height:32px;;">“一家人那么生分干什么？” || 如何应对来自长辈的过密接触</span></a><br></p><p style="white-space: normal;box-sizing: border-box;text-align: center;"><a href="http://mp.weixin.qq.com/s?__biz=MzIwOTYyMzUyNg==&amp;mid=2247485853&amp;idx=1&amp;sn=236dcd545dad13ae3f601f8fbe387a84&amp;chksm=97704914a007c002ab4ea1fe5c31dc7dad9f73fa6815fc9ae01804eff8ec313f4c56013e3e11&amp;scene=21#wechat_redirect" target="_blank" style="text-decoration: underline;font-size:12px;line-height:32px;;"><span style="font-size:12px;line-height:32px;;">关于性侵，我们最不想让你派上用场的应对方法</span></a><br></p><p style="white-space: normal;box-sizing: border-box;text-align: center;"><a href="http://mp.weixin.qq.com/s?__biz=MzIwOTYyMzUyNg==&amp;mid=2247485903&amp;idx=1&amp;sn=56a9f30d4b9b214d38bcef8d65c3665f&amp;chksm=97704946a007c050dc8e06f9e1def97eabc31d0b8bfcd08b45eeea3d3c6f2d7f2bb43f252b27&amp;scene=21#wechat_redirect" target="_blank" style="text-decoration: underline;font-size:12px;line-height:32px;;"><span style="font-size:12px;line-height:32px;;">留学海外，我该怎么应对咸猪手 || 海外党性侵犯应对指南</span></a><br></p></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="box-sizing: border-box;"><section style="box-sizing: border-box;"><p style="box-sizing: border-box;"><br style="box-sizing: border-box;"></p></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="margin-top: 10px;margin-bottom: 10px;box-sizing: border-box;"><section style="display: inline-block;width: 100%;border-width: 1px;border-style: solid;border-color: rgb(150, 150, 150);padding: 10px;box-sizing: border-box;"><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="box-sizing: border-box;"><section style="font-size:12px;line-height:32px;;box-sizing: border-box;"><p style="box-sizing: border-box;"><span style="letter-spacing: 0px;box-sizing: border-box;">文案 / 久衣</span><br style="box-sizing: border-box;"></p><p style="box-sizing: border-box;">排版 / 久衣</p><p style="box-sizing: border-box;">https://may-love.oss-cn-beijing.aliyuncs.com / 网络</p></section></section></section></section></section></section><section class="V5" style="box-sizing: border-box;" powered-by="xiumi.us"><section style="text-align: center;margin-top: 10px;margin-bottom: 10px;box-sizing: border-box;"><section style="max-width: 100%;vertical-align: middle;display: inline-block;box-sizing: border-box;"><img data-ratio="1.778125" src="https://may-love.oss-cn-beijing.aliyuncs.com/2018-08-26_滴滴下线顺风车，我们就安全了吗？/8_qvvxrniccvMXbDvBC1hhfr5pYdialg.jpg" onerror="this.src='https://mmbiz.qpic.cn/mmbiz_jpg/mQFsiaC55xFZT84lIzTeLo1fRjia0bIM3SbRxHyg9SvZB4xNuAHibLOPP6epPqvvxrniccvMXbDvBC1hhfr5pYdialg/640?wx_fmt=jpeg'" data-type="jpeg" data-w="640" style="vertical-align: middle;box-sizing: border-box;"></section></section></section></section><p><br></p>
+                </div>
+<div class="msgBox">
+	<div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_206.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">水果部落閣枪<span>2018-08-27 00:19:51</span></p>
+		<p class="replyBody">看到有旁友反映靠近最后那几段可能会让莓辣的一些男性读者感到不适。莓辣在此表示抱歉对男性有点一概而论了，但是，我们想说，男性自我中心的现象是普遍存在的，而群体又总是容易被表面上看到的大多数人所代替。
+
+如果你是感到不适的男性，我们向你说一声对不起，也真的很感谢有你，你们觉得不适是因为你们不是我们所说的那些男性，感到自己被“污蔑”了，我们知道你对这样的事情也感到愤愤不平。那么，在改变性别不平等的现状这件事上，我们一样可以为此发声，由你开始，改变大众对男性群体的刻板印象。<span class="reply_like_num">赞 20</span></p>
+		 </div></div><div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_858.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">咏琪爱心凌消<span>2018-08-26 23:58:19</span></p>
+		<p class="replyBody">这篇文章后半部分的言论可能会让莓辣的男性读者感到冒犯。但是我们想说的是，这个社会的性别不平等，不仅令女性处于被支配的他者状态，也滋生了“男性都是潜在强奸犯”的言论，这是对男性性欲一种错误的理解和建构，只会助长更多的性暴力。<span class="reply_like_num">赞 12</span></p>
+		 </div></div><div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_963.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">不羁的浪子H99<span>2018-08-27 00:11:34</span></p>
+		<p class="replyBody">真的很不喜欢“幸好我长得很安全”
+“你长得这么安全，不会有人想不开”
+“女的穿那么短换作是我也把持不住啊”
+类似这种言论，把持住是你的责任，穿什么样是我的权利[微笑]<span class="reply_like_num">赞 14</span></p>
+		 </div></div><div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_530.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">左璨妮喜<span>2018-08-27 00:06:06</span></p>
+		<p class="replyBody">滴滴事件一出来第一反应是告诉经常打顺风车的好朋友 
+“她那么晚出去打的活该被强奸啊”“要被强奸了不会求救吗？”
+这次事件发生在了大白天，及时求救，但悲剧依旧发生
+最可悲的是 面对这些丑恶和肮脏 在这样一个便利着人们生活的产品下 我们好像没有办法改变什么 我们什么也不是 可能 就在我留言同时 又有一位受害人出现了
+所力所能及的 就是 在认知观念上 发出微弱的声音 尽管微弱 我们依旧会做<span class="reply_like_num">赞 8</span></p>
+		 </div></div><div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_1306.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">联测罐仓<span>2018-08-26 23:30:19</span></p>
+		<p class="replyBody">最近朋友圈都在讨论这件事,我除了皱眉沉默恐慌并且悲观地想着“什么时候会轮到我呢？”之外什么都做不了。<span class="reply_like_num">赞 8</span></p><div class="msgBodyReply"><div class="msgBodyReplyList">
+						<p class="userName"><em class="replyIcon"></em>作者</p>
+						<p class="autherBody">抱。每一次更深入了解 每一次发声让大家知道相关的事实 都是在帮助环境的改善<span class="reply_like_num">赞 7<span></p></div></div>      </div></div><div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_728.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">杨肉肉艳<span>2018-08-26 23:41:45</span></p>
+		<p class="replyBody">事件体现出的问题，还有很多，微信公众号霍老爷中午那篇，感兴趣的可以看看<span class="reply_like_num">赞 5</span></p>
+		 </div></div><div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_625.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">啤酒当茶喝强<span>2018-08-27 13:52:36</span></p>
+		<p class="replyBody">首先希望你明白，翻阅公众号文章不是做阅读理解，不会去一句话一句话扣你到底要表达的是什么，你在文章中说 抱歉要把性别单拎出来 说“男性以自己为中心、以女性为附属建构而成的性别关系，比任何一个人想象的都要稳固的多，也更为广泛地体现着。” 并且标红，总共文字就不多，前一小部分只是在陈述事件，陈述完以后开始通篇对男性进行评价，而不是置顶评论中的后面几段喔，文章标题“滴滴下线顺风车，我们就安全了吗”那请问“我们”指谁？本以为是一篇教如何防范风险提升自身安全的文章，没想到对男性的评价占了绝大部分篇幅，你说半个小时之内补充了，主动征集了网友意见才补充了，那为什么还要和我争辩呢？自己的文章文字语言有问题，还要质疑读者有没有好好理解，抱歉，信息爆发时代，没那个时间。<span class="reply_like_num">赞 3</span></p><div class="msgBodyReply"><div class="msgBodyReplyList">
+						<p class="userName"><em class="replyIcon"></em>作者</p>
+						<p class="autherBody">好的了解了。之后莓辣的文章会经过更加严谨的内部讨论再写出来。谢谢你愿意花费这么多时间提供意见。不过还是解释一下：我们题目就是想说所谓的安全指南和各种措施是没用的。遇害女孩什么都做了，还要怎样防范风险提高自身安全啊…我们以为这是这个事件的共识，是我们没有做好全面考据。<span class="reply_like_num">赞 4<span></p></div></div>      </div></div><div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_507.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">堇年丽<span>2018-08-27 13:36:28</span></p>
+		<p class="replyBody">你现在还在觉得“文章可能有偏颇了”而已，“不到半小时就进行补充了”，难道文章发布之前不应该先好好确认文章表达的够不够严谨，适不适合发布吗？“留言补充；大家一起看得到”这跟我把你打一顿，然后说句对不起，有什么区别呢？也是大家一起听到道歉了不是？文章里有些文字简直不止是偏颇啊朋友，难道出了这样的事就要所有男性背锅吗？社会现在都在说男性的不好，男权主义，难道每一个男性都是如此吗，凭什么用自己的义愤填膺去领导大众的价值观，最后用再几句话补充而已。会不会太不负责任了？<span class="reply_like_num">赞 3</span></p><div class="msgBodyReply"><div class="msgBodyReplyList">
+						<p class="userName"><em class="replyIcon"></em>作者</p>
+						<p class="autherBody">请问您好好理解文章内容了吗？不是全部男性都这样，而是现在的社会结构给两性都带来了桎梏。语言可能偏颇，但主旨没有。<span class="reply_like_num">赞 4<span></p></div></div>      </div></div><div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_169.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">张子涵掐<span>2018-08-27 13:18:20</span></p>
+		<p class="replyBody">看到了，若不是网友反映，也不会有那两条置顶留言。不要拿置顶留言对文章内容的弥补来说事，特别是在有网友反映后才补充的留言。<span class="reply_like_num">赞 4</span></p><div class="msgBodyReply"><div class="msgBodyReplyList">
+						<p class="userName"><em class="replyIcon"></em>作者</p>
+						<p class="autherBody">第二条的主旨内容 本来想放在文章内的，但是觉得整体难以协调，所以放在留言部分了。然后 网友反映也是我们成员的主动去交流得知的。另外文章可能有偏颇了 我们在发出不到半小时就做留言补充了，不能拿来说事的理由是什么？大家难道不是一起看到的吗？<span class="reply_like_num">赞 3<span></p></div></div>      </div></div><div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_14.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">流血的骷髅材<span>2018-08-27 12:56:07</span></p>
+		<p class="replyBody">最后这几段...作者在想什么？公众号的目的是用过激言论引导群众价值观导向吗？？搞不懂<span class="reply_like_num">赞 4</span></p><div class="msgBodyReply"><div class="msgBodyReplyList">
+						<p class="userName"><em class="replyIcon"></em>作者</p>
+						<p class="autherBody">请问您看置顶留言了吗？<span class="reply_like_num">赞 2<span></p></div></div>      </div></div><div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_905.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">zhyonly双子<span>2018-08-26 23:44:50</span></p>
+		<p class="replyBody">相关文章很有用啊<span class="reply_like_num">赞 4</span></p>
+		 </div></div><div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_1403.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">无标题锁<span>2018-08-26 23:25:48</span></p>
+		<p class="replyBody">封面关键词：滴滴 打车 夜路 <span class="reply_like_num">赞 4</span></p>
+		 </div></div><div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_1369.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">晓璇是火药l<span>2018-08-27 14:22:54</span></p>
+		<p class="replyBody">也谢谢你们愿意花时间了解读者的想法，现在许多公众号都爱发表主观言论，真心希望公众号应当保持中立理性分析问题。祝你们越来越好[太阳]<span class="reply_like_num">赞 2</span></p><div class="msgBodyReply"><div class="msgBodyReplyList">
+						<p class="userName"><em class="replyIcon"></em>作者</p>
+						<p class="autherBody">??????<span class="reply_like_num">赞 2<span></p></div></div>      </div></div><div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_292.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">负己萧<span>2018-08-27 00:50:49</span></p>
+		<p class="replyBody">看了一会儿就有预感是91文案了[捂脸]<span class="reply_like_num">赞 2</span></p><div class="msgBodyReply"><div class="msgBodyReplyList">
+						<p class="userName"><em class="replyIcon"></em>作者</p>
+						<p class="autherBody">喔哦<span class="reply_like_num">赞 2<span></p></div></div>      </div></div><div class="msg">
+	<div class="userHeadImg"><img src="https://www.juyifx.cn/config/img/qlogo/aratar_1035.jpg"></div>
+	<div class="msgBody">
+		<p class="userName">myhome久久房产<span>2018-08-27 21:57:01</span></p>
+		<p class="replyBody">我们希望能将女性和男性看作是人，而不是一个借口，不是一个器官。<span class="reply_like_num">赞 1</span></p>
+		 </div></div>
+</div>
+
+</div>
+</body>
+</html>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%8E%93%E8%BE%A3MAYLOVE/" rel="tag"># 莓辣MAYLOVE</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/c50bf957d11e/" rel="prev" title="妈，我蛋坏了……30s科普">
+      <i class="fa fa-chevron-left"></i> 妈，我蛋坏了……30s科普
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/38c6c4948b5f/" rel="next" title="我的丁丁也需要盛装打扮男士内裤鉴赏">
+      我的丁丁也需要盛装打扮男士内裤鉴赏 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MayLove</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
